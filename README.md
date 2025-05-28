@@ -103,7 +103,7 @@ This isn’t just a fix — it’s a new design space for wallets, dApps, securi
 
 - [Idea](./docs/idea.md)
 - [Articles](./docs/articles.md)
-- [Examples](./examples)
+- [Examples](./docs/examples/README.md)
 
 ## 🤝 Supporting Communities
 
