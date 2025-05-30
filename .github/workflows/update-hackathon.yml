@@ -5,13 +5,11 @@ on:
     branches:
       - main
     paths:
-      - 'demos/*.md'
       - 'registration/*.md'
   pull_request:
     branches:
       - main
     paths:
-      - 'demos/*.md'
       - 'registration/*.md'
 
 jobs:

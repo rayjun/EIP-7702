@@ -40,14 +40,14 @@ Low-cost, casual hackathons that let anyone revel in the pure joy of creating �
 2. **How to Build**
 
    - Fork the repo and clone it locally
-   - Create a folder under `/demos` for your project
+   - Create a folder under `/submission` for your project
    - Start building your magic within your project folder (please do not edit others' folder) 🧙‍♂️
 
 3. **How to Submit**
 
    - When done, submit a PR with your project before the Demo day deadline
    - Make sure your project folder includes a `README.md`
-   - Add your project details to the `README.md`, please follow the [demo template](./demos/template.md) for consistency
+   - Add your project details to the `README.md`, please follow the [submission template](./submission/template.md) for consistency
 
 ## 👨‍💻 Who Should Join?
 

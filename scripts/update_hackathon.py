@@ -58,18 +58,6 @@ def parse_file(file_path):
                     'notes': extract_field(content, 'notes'),
                     'file_path': file_path
                 }
-            # Check if this is a demo submission file
-            elif "project_name:" in content:
-                return {
-                    'type': 'demo',
-                    'project_name': extract_field(content, 'project_name'),
-                    'description': extract_field(content, 'description'),
-                    'project_link': extract_field(content, 'project_link'),
-                    'team_members': extract_list_field(content, 'team_members'),
-                    'presentation_link': extract_field(content, 'presentation_link'),
-                    'notes': extract_field(content, 'notes'),
-                    'file_path': file_path
-                }
             else:
                 print(f"Unknown file type: {file_path}")
                 return None
