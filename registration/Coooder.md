@@ -23,8 +23,8 @@ timezone: 'UTC+8' # Timezone, e.g., UTC+8, EST, PST (for team collaboration sche
 ```yaml
 team_name: 'Very Cool' # Team name (if you have a team) or leave empty if looking for a team
 team_status: 'Looking for teammates' # Team status: Complete team formed | Looking for teammates | Open to join other teams | Solo participation
-project_name: 'EIP-7702' # Project name (if you have an idea) or leave empty if undecided
-project_description: 'EIP-7702 is a proposal for a new type of account on Ethereum, called an abstract account. Abstract accounts are accounts that are not controlled by a private key, but by a smart contract. This allows for a more secure and flexible way to interact with the Ethereum network.' # Project brief including problems to solve and basic approach (within 100 words)
+project_name: '7702-Defender' # Project name (if you have an idea) or leave empty if undecided
+project_description: '7702-Defender is a dApp that defends against attacks on EIP-7702 accounts.' # Brief description about your project in one sentence
 ```
 
 ## ℹ️ Additional Information
