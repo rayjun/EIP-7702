@@ -6,7 +6,8 @@ from datetime import datetime
 
 def extract_field(content, field_name):
     """Extract a field value from the content using regex."""
-    pattern = rf'{field_name}:\s*"([^"]*)"'
+    # Match both single and double quoted values
+    pattern = rf'{field_name}:\s*[\'"]([^\'"]*)[\'"]'
     match = re.search(pattern, content)
     if match:
         return match.group(1)
@@ -33,16 +34,27 @@ def parse_file(file_path):
             content = f.read()
             
             # Check if this is a registration file
-            if "username:" in content:
+            if "name:" in content:
                 return {
                     'type': 'registration',
-                    'username': extract_field(content, 'username'),
+                    # Personal Information
+                    'name': extract_field(content, 'name'),
+                    'description': extract_field(content, 'description'),
+                    'contact_method': extract_field(content, 'contact_method'),
                     'contact': extract_field(content, 'contact'),
                     'wallet_address': extract_field(content, 'wallet_address'),
                     'role': extract_field(content, 'role'),
+                    'experience_level': extract_field(content, 'experience_level'),
+                    'timezone': extract_field(content, 'timezone'),
+                    # Team Information
                     'team_name': extract_field(content, 'team_name'),
-                    'idea': extract_field(content, 'idea'),
+                    'team_status': extract_field(content, 'team_status'),
+                    'project_name': extract_field(content, 'project_name'),
+                    'project_description': extract_field(content, 'project_description'),
+                    # Additional Information
+                    'tech_stack': extract_field(content, 'tech_stack'),
                     'support_needed': extract_field(content, 'support_needed'),
+                    'goals': extract_field(content, 'goals'),
                     'notes': extract_field(content, 'notes'),
                     'file_path': file_path
                 }
@@ -80,16 +92,34 @@ def update_participants_table(registrations):
     """Update only the participants table in the README file."""
     readme_path = os.path.join(os.getcwd(), 'README.md')
     
-    # Generate participants table
-    participants_table = "| Username | Contact | Role | Team |\n|----------|---------|------|------|\n"
-    
+    # Generate participants table with original columns
+    participants_table = "| Name | Role | Team Status | Project Name | Project Description | Contact |\n|------|------|-------------|--------------|--------------------|---------|\n"
+
     for reg in registrations:
-        username = reg.get('username', 'N/A')
-        contact = reg.get('contact', 'N/A')
+        name = reg.get('name', 'N/A')
         role = reg.get('role', 'N/A')
-        team_name = reg.get('team_name', 'N/A')
+        team_status = reg.get('team_status', 'N/A')
+        project_name = reg.get('project_name', 'N/A')
+        project_description = reg.get('project_description', 'N/A')
+        contact = reg.get('contact', 'N/A')
+        contact_method = reg.get('contact_method', 'N/A')
+        file_path = reg.get('file_path', '')
+
+        # Create a link to the registration file
+        md_link = name
+        if file_path and name != 'N/A':
+            filename = os.path.basename(file_path)
+            md_link = f'[{name}](./registration/{filename})'
+
+        # Format contact with method if available
+        contact_display = contact
+        if contact_method != 'N/A' and contact != 'N/A':
+            contact_display = f'{contact} ({contact_method})'
         
-        participants_table += f"| {username} | {contact} | {role} | {team_name} |\n"
+        # Escape pipe characters in description to avoid breaking the table
+        project_description = project_description.replace('|', '&#124;') if project_description else 'N/A'
+
+        participants_table += f"| {md_link} | {role} | {team_status} | {project_name} | {project_description} | {contact_display} |\n"
     
     try:
         # Read the existing README file
@@ -101,7 +131,8 @@ def update_participants_table(registrations):
         match = re.search(pattern, content)
         
         if match:
-            # Replace just the participants table with exactly one newline before and after
+            # Replace just the participants section with exactly two newlines after the heading
+            # followed by the participants table
             updated_content = re.sub(
                 pattern,
                 r'\1' + f"\n\n{participants_table}",

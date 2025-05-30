@@ -101,10 +101,8 @@ This isn’t just a fix — it’s a new design space for wallets, dApps, securi
 
 ## 👥 Participants
 
-| Username    | Contact         | Role      | Team     |
-| ----------- | --------------- | --------- | -------- |
-| brucexu-eth | brucexu_eth     | Developer | GasDaddy |
-| Coooder     | @Coooder_Crypto | Developer | VeryCool |
+| Name | Role | Team Status | Project Name | Project Description | Contact |
+|------|------|-------------|--------------|--------------------|---------|
 
 ## 📚 Resources
 
