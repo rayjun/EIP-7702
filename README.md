@@ -110,10 +110,62 @@ This isn’t just a fix — it’s a new design space for wallets, dApps, securi
 - [Articles](./docs/articles.md)
 - [Examples](./docs/examples/README.md)
 
-## 🤝 Supporting Communities
 
-- [@LXDAO_Official](https://twitter.com/LXDAO_Official)
-- [@ETHPanda_Org](https://twitter.com/ETHPanda_Org)
+## 🤝 Co-organizers
+
+<table>
+    <tr>
+         <td  align="center" valign="middle">
+            <a href="https://lxdao.io/" target="_blank">
+                <img src="./images/LXDAO.png" alt="LXDAO" width="130" />
+            </a>
+        </td>
+        <td  align="center" valign="middle">
+            <a href="https://ethpanda.org/" target="_blank">
+                <img src="./images/ETHPanda.png" alt="ETHPanda" width="130" />
+            </a>
+        </td>
+    </tr>
+</table>
+
+## 💰 Sponsors
+
+<table>
+    <tr>
+        <td align="center" valign="middle">  
+            <a href="https://chainforgood.org/" target="_blank">
+                <img src="./images/BGA.png" alt="BGA" width="130" />
+            </a>
+        </td>
+        <td align="center" valign="middle">  
+            <a href="https://onekey.so/" target="_blank">
+                <img src="./images/onkey.png" alt="onkey" width="130" />
+            </a>
+        </td>
+        <td align="center" valign="middle">  
+            <a href="https://slowmist.com/" target="_blank">
+                <img src="./images/SlowMist.png" alt="SlowMist" width="130" />
+            </a>
+        </td>
+    </tr>
+</table>
+
+## 🌐 Community Support
+
+<table>
+    <tr>
+        <td align="center" valign="middle">  
+            <a href="https://www.ethcatherders.com/" target="_blank">
+                <img src="./images/ECH.png" alt="ECH" width="130" />
+            </a>
+        </td>
+        <td align="center" valign="middle">  
+            <a href="https://buidlguidl.com/" target="_blank">
+                <img src="./images/buidlguidl.png" alt="buidlguidl" width="130" />
+            </a>
+        </td>
+    </tr>
+</table>
 
 ## 💬 Discussion Group
 
