@@ -103,7 +103,7 @@ This isn’t just a fix — it’s a new design space for wallets, dApps, securi
 
 | Name | Role | Team Status | Project Name | Project Description | Contact |
 |------|------|-------------|--------------|--------------------|---------|
-| [Coooder](./registration/Coooder.md) | Frontend Developer | Looking for teammates | EIP-7702 | EIP-7702 is a proposal for a new type of account on Ethereum, called an abstract account. Abstract a... | @Coooder_Crypto (Telegram) |
+| [Coooder](./registration/Coooder.md) | Frontend Developer | Looking for teammates | 7702-Defender | 7702-Defender is a dApp that defends against attacks on EIP-7702 accounts. | @Coooder_Crypto (Telegram) |
 
 ## 📚 Resources
 
