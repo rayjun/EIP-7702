@@ -8,26 +8,34 @@ Do not remove the --- markers or change the field names.
 ## 👤 Personal Information (required)
 
 ```yaml
-username: "" # Your username
-contact: "" # Your tg or preferred contact method
-wallet_address: "" # Your wallet address
-role: "" # Developer or Designer or whatever you are
+name: '' # Your name or nickname
+description: '' # Brief personal introduction including skills and experience (One sentence)
+contact_method: '' # Contact method: Telegram | WeChat | Discord | Email | X(Twitter) | GitHub
+contact: '' # Your contact details, e.g., @username, email@example.com
+wallet_address: '' # Your wallet address or ENS domain on Ethereum mainnet
+role: '' # Primary skill role: Solidity Developer | Frontend Developer | Backend Developer | Full-stack Developer | Product Manager | UI/UX Designer | Test Engineer | Blockchain Researcher | etc.
+experience_level: '' # Blockchain development experience: Beginner | Junior | Intermediate | Senior | Expert
+timezone: '' # Timezone, e.g., UTC+8, EST, PST (for team collaboration scheduling)
 ```
 
-## 👥 Team Information (optional)
+## 👥 Team Information
 
 ```yaml
-team_name: "" # Your team name
-idea: "" # Brief description of your project idea
+team_name: '' # Team name (if you have a team) or leave empty if looking for a team
+team_status: '' # Team status: Complete team formed | Looking for teammates | Open to join other teams | Solo participation
+project_name: '' # Project name (if you have an idea) or leave empty if undecided
+project_description: '' # Project brief including problems to solve and basic approach (within 100 words)
 ```
 
-## ℹ️ Additional Information (optional)
+## ℹ️ Additional Information
 
 ```yaml
-support_needed: "" # What kind of support are you looking for?
-notes: "" # Any additional information
+tech_stack: '' # Planned technology stack, e.g., React, Node.js, Solidity, Hardhat, ethers.js
+support_needed: '' # Type of support needed: Technical guidance | Team matching | Project ideas | Resource connection | Mentor advice
+goals: '' # Participation goals: Learn new technology | Build MVP | Find collaborators | Win prizes | Other
+notes: '' # Additional information, special requirements, or anything else you'd like to share
 ```
+
 ---
 
 <!-- Do not edit below this line. This section will be automatically generated when your registration is processed. -->
-
