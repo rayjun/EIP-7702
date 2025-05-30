@@ -97,7 +97,7 @@ def update_participants_table(registrations):
             content = f.read()
         
         # Find the participants section and replace it
-        pattern = r'(## Participants)\s+([\s\S]*?)(?=\n##|\Z)'
+        pattern = r'(## 👥 Participants)\s+([\s\S]*?)(?=\n##|\Z)'
         match = re.search(pattern, content)
         
         if match:
