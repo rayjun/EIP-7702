@@ -13,6 +13,13 @@ def extract_field(content, field_name):
         return match.group(1)
     return "N/A"
 
+
+def truncate_description(text, max_length):
+    """Truncate text to max_length and add ellipsis if it exceeds that length."""
+    if text and len(text) > max_length:
+        return text[:max_length] + '...'
+    return text
+
 def extract_list_field(content, field_name):
     """Extract a list field value from the content using regex."""
     pattern = rf'{field_name}:\s*\[(.*?)\]'
@@ -50,7 +57,7 @@ def parse_file(file_path):
                     'team_name': extract_field(content, 'team_name'),
                     'team_status': extract_field(content, 'team_status'),
                     'project_name': extract_field(content, 'project_name'),
-                    'project_description': extract_field(content, 'project_description'),
+                    'project_description': truncate_description(extract_field(content, 'project_description'), 100),
                     # Additional Information
                     'tech_stack': extract_field(content, 'tech_stack'),
                     'support_needed': extract_field(content, 'support_needed'),

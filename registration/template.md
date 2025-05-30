@@ -24,7 +24,7 @@ timezone: '' # Timezone, e.g., UTC+8, EST, PST (for team collaboration schedulin
 team_name: '' # Team name (if you have a team) or leave empty if looking for a team
 team_status: '' # Team status: Complete team formed | Looking for teammates | Open to join other teams | Solo participation
 project_name: '' # Project name (if you have an idea) or leave empty if undecided
-project_description: '' # Project brief including problems to solve and basic approach (within 100 words)
+project_description: '' # Brief description about your project in one sentence
 ```
 
 ## ℹ️ Additional Information
