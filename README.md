@@ -33,7 +33,7 @@ Low-cost, casual hackathons that let anyone revel in the pure joy of creating �
 1. **How to Register**
 
    - Fork this repository
-   - In the `/registration` folder, copy the [registration template](./registration/template.md) and create a new file named `[your-github-id].md`
+   - In the [./registration](./registration/) folder, copy the [registration template](./registration/template.md) and create a new file named `[your-github-id].md`
    - Add your participant details to `[your-github-id].md` (please do not edit `template.md`)
    - Submit a PR — once merged, you’re officially registered 🎉
 
@@ -101,17 +101,16 @@ This isn’t just a fix — it’s a new design space for wallets, dApps, securi
 
 ## 👥 Participants
 
-| Username | Contact | Role | Team |
-|----------|---------|------|------|
-| brucexu-eth | brucexu_eth | Developer | GasDaddy |
-| Coooder | @Coooder_Crypto | Developer | VeryCool |
+| Username    | Contact         | Role      | Team     |
+| ----------- | --------------- | --------- | -------- |
+| brucexu-eth | brucexu_eth     | Developer | GasDaddy |
+| Coooder     | @Coooder_Crypto | Developer | VeryCool |
 
 ## 📚 Resources
 
 - [Idea](./docs/idea.md)
 - [Articles](./docs/articles.md)
 - [Examples](./docs/examples/README.md)
-
 
 ## 🤝 Co-organizers
 
@@ -134,17 +133,17 @@ This isn’t just a fix — it’s a new design space for wallets, dApps, securi
 
 <table>
     <tr>
-        <td align="center" valign="middle">  
+        <td align="center" valign="middle">
             <a href="https://chainforgood.org/" target="_blank">
                 <img src="./images/BGA.png" alt="BGA" width="130" />
             </a>
         </td>
-        <td align="center" valign="middle">  
+        <td align="center" valign="middle">
             <a href="https://onekey.so/" target="_blank">
                 <img src="./images/onkey.png" alt="onkey" width="130" />
             </a>
         </td>
-        <td align="center" valign="middle">  
+        <td align="center" valign="middle">
             <a href="https://slowmist.com/" target="_blank">
                 <img src="./images/SlowMist.png" alt="SlowMist" width="130" />
             </a>
@@ -156,12 +155,12 @@ This isn’t just a fix — it’s a new design space for wallets, dApps, securi
 
 <table>
     <tr>
-        <td align="center" valign="middle">  
+        <td align="center" valign="middle">
             <a href="https://www.ethcatherders.com/" target="_blank">
                 <img src="./images/ECH.png" alt="ECH" width="130" />
             </a>
         </td>
-        <td align="center" valign="middle">  
+        <td align="center" valign="middle">
             <a href="https://buidlguidl.com/" target="_blank">
                 <img src="./images/buidlguidl.png" alt="buidlguidl" width="130" />
             </a>
