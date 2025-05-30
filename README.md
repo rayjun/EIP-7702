@@ -103,6 +103,7 @@ This isn’t just a fix — it’s a new design space for wallets, dApps, securi
 
 | Name | Role | Team Status | Project Name | Project Description | Contact |
 |------|------|-------------|--------------|--------------------|---------|
+| [Coooder](./registration/Coooder.md) | Frontend Developer | Looking for teammates | EIP-7702 | EIP-7702 is a proposal for a new type of account on Ethereum, called an abstract account. Abstract accounts are accounts that are not controlled by a private key, but by a smart contract. This allows for a more secure and flexible way to interact with the Ethereum network. | @Coooder_Crypto (Telegram) |
 
 ## 📚 Resources
 
