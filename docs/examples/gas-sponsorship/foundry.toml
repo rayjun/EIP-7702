@@ -1,0 +1,17 @@
+[profile.default]
+src = "contracts/src"
+out = "contracts/out"
+libs = ["contracts/lib"]
+script = "contracts/script"
+
+# Compilation settings
+solc_version = "0.8.20"
+optimizer = true
+optimizer_runs = 200
+
+# Sepolia testnet configuration
+[rpc_endpoints]
+sepolia = "https://eth-sepolia.public.blastapi.io"
+
+[etherscan]
+sepolia = { key = "${ETHERSCAN_API_KEY}" }
