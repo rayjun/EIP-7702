@@ -2,6 +2,7 @@ import { walletClient } from './config.js';
 import { abi, contractAddress } from './contract.js';
 import { privateKeyToAccount } from 'viem/accounts';
 import { sepolia } from 'viem/chains';
+import { relay } from './config.js';
 
 async function main() {
   const eoa = privateKeyToAccount(process.env.EOA_PRIVATE_KEY as `0x${string}`);
@@ -13,10 +14,21 @@ async function main() {
 
   console.log('authorization', authorization);
 
+  // self execute delegation contract
+  // const hash = await walletClient.writeContract({
+  //   abi,
+  //   address: eoa.address,
+  //   account: eoa,
+  //   chain: sepolia,
+  //   authorizationList: [authorization],
+  //   functionName: 'initialize',
+  // });
+
+  // execute delegation contract by relay
   const hash = await walletClient.writeContract({
     abi,
-    address: contractAddress,
-    account: eoa,
+    address: eoa.address,
+    account: relay,
     chain: sepolia,
     authorizationList: [authorization],
     functionName: 'initialize',
@@ -24,7 +36,7 @@ async function main() {
 
   // const hash = await walletClient.writeContract({
   //   abi,
-  //   address: contractAddress,
+  //   address: eoa.address,
   //   account: eoa,
   //   chain: sepolia,
   //   authorizationList: [authorization],
