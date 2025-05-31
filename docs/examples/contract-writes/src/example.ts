@@ -11,6 +11,8 @@ async function main() {
     contractAddress,
   });
 
+  console.log('authorization', authorization);
+
   // const hash = await walletClient.writeContract({
   //   abi,
   //   address: contractAddress,
@@ -29,7 +31,7 @@ async function main() {
     functionName: 'ping',
   });
 
-  console.log('Transaction hash:', hash);
+  console.log(`Transaction hash: https://sepolia.etherscan.io/tx/${hash}`);
 }
 
 main().catch(console.error);
