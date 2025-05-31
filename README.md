@@ -8,7 +8,7 @@ Bring your creativity, code, and maybe a cup of iced coffee — and help shape t
 
 ## ⏰ Event Timeline
 
-- Open registration: 1-6 Jun. Learn from repo + pop-up workshops
+- Open registration: 1-6 Jun. Learn from repo (or add more docs, ideas, examples!) + pop-up workshops
 - Open Day: 6 Jun. Deep-dive 7702, Q&A, team match
 - Hacking: 6 Jun - 8 Jun. Couch-friendly hacking weekend
 - Demo day: 8 Jun. Submit on GitHub, live show, fun prizes 🎁
