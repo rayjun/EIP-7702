@@ -8,12 +8,12 @@ Bring your creativity, code, and maybe a cup of iced coffee — and help shape t
 
 ## ⏰ Event Timeline
 
-- Open registration: TBD
-- Open day: TBD
-- Office hour: TBD
-- Demo day: TBD
+- Open registration: 1-6 Jun. Learn from repo + pop-up workshops
+- Open Day: 6 Jun. Deep-dive 7702, Q&A, team match
+- Hacking: 6 Jun - 8 Jun. Couch-friendly hacking weekend
+- Demo day: 8 Jun. Submit on GitHub, live show, fun prizes 🎁
 
-TODO Meeting Calendar
+Stay up to date by joining our Telegram group: <https://t.me/+XFSgo4aUGYA1NWZh>.
 
 ## 🌿 What is Casual Hackathon?
 
@@ -167,9 +167,5 @@ This isn’t just a fix — it’s a new design space for wallets, dApps, securi
         </td>
     </tr>
 </table>
-
-## 💬 Discussion Group
-
-- [Telegram Group](https://t.me/+XFSgo4aUGYA1NWZh)
 
 _Last updated: 2025-05-28 15:53:27_
