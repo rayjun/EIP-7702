@@ -13,23 +13,23 @@ async function main() {
 
   console.log('authorization', authorization);
 
-  // const hash = await walletClient.writeContract({
-  //   abi,
-  //   address: contractAddress,
-  //   account: eoa,
-  //   chain: sepolia,
-  //   authorizationList: [authorization],
-  //   functionName: 'initialize',
-  // });
-
   const hash = await walletClient.writeContract({
     abi,
     address: contractAddress,
     account: eoa,
     chain: sepolia,
     authorizationList: [authorization],
-    functionName: 'ping',
+    functionName: 'initialize',
   });
+
+  // const hash = await walletClient.writeContract({
+  //   abi,
+  //   address: contractAddress,
+  //   account: eoa,
+  //   chain: sepolia,
+  //   authorizationList: [authorization],
+  //   functionName: 'ping',
+  // });
 
   console.log(`Transaction hash: https://sepolia.etherscan.io/tx/${hash}`);
 }
