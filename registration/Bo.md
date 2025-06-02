@@ -10,12 +10,12 @@ Do not remove the --- markers or change the field names.
 ```yaml
 name: "Bo" # Your name or nickname
 description: "Full-stack Developer focused on AI, DeFi, arbitrage and MEV opportunities" # Brief personal introduction including skills and experience (One sentence)
-contact_method: "" # Contact method: Telegram | WeChat | Discord | Email | X(Twitter) | GitHub
-contact: "" # Your contact details, e.g., @username, email@example.com
+contact_method: "GitHub" # Contact method: Telegram | WeChat | Discord | Email | X(Twitter) | GitHub
+contact: "Bo-00" # Your contact details, e.g., @username, email@example.com
 wallet_address: "" # Your wallet address or ENS domain on Ethereum mainnet
 role: "Full-stack Developer" # Primary skill role: Solidity Developer | Frontend Developer | Backend Developer | Full-stack Developer | Product Manager | UI/UX Designer | Test Engineer | Blockchain Researcher | etc.
-experience_level: "" # Blockchain development experience: Beginner | Junior | Intermediate | Senior | Expert
-timezone: "" # Timezone, e.g., UTC+8, EST, PST (for team collaboration scheduling)
+experience_level: "Senior" # Blockchain development experience: Beginner | Junior | Intermediate | Senior | Expert
+timezone: "UTC+8" # Timezone, e.g., UTC+8, EST, PST (for team collaboration scheduling)
 ```
 
 ## 👥 Team Information
