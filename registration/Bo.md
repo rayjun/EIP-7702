@@ -21,7 +21,7 @@ timezone: "UTC+8" # Timezone, e.g., UTC+8, EST, PST (for team collaboration sche
 ## 👥 Team Information
 
 ```yaml
-team_name: "" # Team name (if you have a team) or leave empty if looking for a team
+team_name: "Rescue Protocol" # Team name (if you have a team) or leave empty if looking for a team
 team_status: "Looking for teammates" # Team status: Complete team formed | Looking for teammates | Open to join other teams | Solo participation
 project_name: "Asset Guardian 7702" # Project name (if you have an idea) or leave empty if undecided
 project_description: "Utilizing EIP-7702 technology to rescue assets from compromised private key accounts and provide secure asset recovery solutions" # Brief description about your project in one sentence
