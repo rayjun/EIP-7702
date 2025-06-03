@@ -165,6 +165,11 @@ This isn’t just a fix — it’s a new design space for wallets, dApps, securi
                 <img src="./images/buidlguidl.png" alt="buidlguidl" width="130" />
             </a>
         </td>
+        <td align="center" valign="middle">
+            <a href="https://dapplearning.org/" target="_blank">
+                <img src="./images/DappLearning.png" alt="DappLearning" width="130" />
+            </a>
+        </td>
     </tr>
 </table>
 
