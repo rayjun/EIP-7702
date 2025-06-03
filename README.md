@@ -103,6 +103,7 @@ This isn’t just a fix — it’s a new design space for wallets, dApps, securi
 
 | Name | Role | Team Status | Project Name | Project Description | Contact |
 |------|------|-------------|--------------|--------------------|---------|
+| [zhitong](./registration/Nickwest.md) | Full-stack Developer |  |  | N/A | @zk_nick (Telegram) |
 | [brucexu.eth](./registration/Bruce.md) | Developer | Looking for teammates | GasDaddy | Oh Daddy, please pay for my gas fee, thanks. | @brucexu_eth (Telegram) |
 | [Coooder](./registration/Coooder.md) | Frontend Developer | Looking for teammates | 7702-Defender | 7702-Defender is a dApp that defends against attacks on EIP-7702 accounts. | @Coooder_Crypto (Telegram) |
 
