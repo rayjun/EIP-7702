@@ -105,6 +105,7 @@ This isn’t just a fix — it’s a new design space for wallets, dApps, securi
 |------|------|-------------|--------------|----------------------|---------|
 | [SolidityGo](./registration/SolidityGo.md) | Developer | Looking for teammates | V3Trader | Learning Uniswap V3 by EIP-7702 | @SolidityGo (Telegram) |
 | [Jo 13](./registration/obou07.md) | Solidity Developer | Looking for teammates | SecureEOA | A security-focused implementation of EIP-7702 that enables enhanced transaction validation and recov... | jo00013 (Discord) |
+| [Caos](./registration/Caosbad.md) | Full-stack Developer | Looking for teammates |  |  | @caosbad (Telegram) |
 | [zhitong](./registration/Nickwest.md) | Full-stack Developer |  |  |  | @zk_nick (Telegram) |
 | [brucexu.eth](./registration/Bruce.md) | Developer | Looking for teammates | GasDaddy | Oh Daddy, please pay for my gas fee, thanks. | @brucexu_eth (Telegram) |
 | [Coooder](./registration/Coooder.md) | Frontend Developer | Looking for teammates | 7702-Defender | 7702-Defender is a dApp that defends against attacks on EIP-7702 accounts. | @Coooder_Crypto (Telegram) |
