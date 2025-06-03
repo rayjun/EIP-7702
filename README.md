@@ -109,6 +109,7 @@ This isn’t just a fix — it’s a new design space for wallets, dApps, securi
 | [zhitong](./registration/Nickwest.md) | Full-stack Developer |  |  |  | @zk_nick (Telegram) |
 | [Ray](./registration/rayjun.md) | Backend Developer | Looking for teammates | EDex | Your EOA is a DEX, so just swap | @rayoo_eth (Telegram) |
 | [brucexu.eth](./registration/Bruce.md) | Developer | Looking for teammates | GasDaddy | Oh Daddy, please pay for my gas fee, thanks. | @brucexu_eth (Telegram) |
+| [0xKoiner](./registration/0xKoiner.md) | Solidity Developer | Blockchain Researcher | Solo participation | OPF7702 | All-in-one EIP-7702 powered smart accounts with session key support | koiner_0x (Telegram) |
 | [Bo](./registration/Bo.md) | Full-stack Developer | Looking for teammates | Asset Guardian 7702 | Utilizing EIP-7702 technology to rescue assets from compromised private key accounts and provide sec... | Bo-00 (GitHub) |
 | [Coooder](./registration/Coooder.md) | Frontend Developer | Looking for teammates | 7702-Defender | 7702-Defender is a dApp that defends against attacks on EIP-7702 accounts. | @Coooder_Crypto (Telegram) |
 
