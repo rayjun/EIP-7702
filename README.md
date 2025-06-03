@@ -170,6 +170,11 @@ This isn’t just a fix — it’s a new design space for wallets, dApps, securi
                 <img src="./images/DappLearning.png" alt="DappLearning" width="130" />
             </a>
         </td>
+        <td align="center" valign="middle">
+            <a href="https://defihacklabs.io/" target="_blank">
+                <img src="./images/defihacklabs.png" alt="defihacklabs" width="130" />
+            </a>
+        </td>
     </tr>
 </table>
 
