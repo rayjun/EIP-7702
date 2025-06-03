@@ -108,6 +108,7 @@ This isn’t just a fix — it’s a new design space for wallets, dApps, securi
 | [Caos](./registration/Caosbad.md) | Full-stack Developer | Looking for teammates |  |  | @caosbad (Telegram) |
 | [zhitong](./registration/Nickwest.md) | Full-stack Developer |  |  |  | @zk_nick (Telegram) |
 | [brucexu.eth](./registration/Bruce.md) | Developer | Looking for teammates | GasDaddy | Oh Daddy, please pay for my gas fee, thanks. | @brucexu_eth (Telegram) |
+| [Bo](./registration/Bo.md) | Full-stack Developer | Looking for teammates | Asset Guardian 7702 | Utilizing EIP-7702 technology to rescue assets from compromised private key accounts and provide sec... | Bo-00 (GitHub) |
 | [Coooder](./registration/Coooder.md) | Frontend Developer | Looking for teammates | 7702-Defender | 7702-Defender is a dApp that defends against attacks on EIP-7702 accounts. | @Coooder_Crypto (Telegram) |
 
 ## 📚 Resources
