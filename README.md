@@ -103,6 +103,7 @@ This isn’t just a fix — it’s a new design space for wallets, dApps, securi
 
 | Name | Role | Team Status | Project Name | Project Description | Contact |
 |------|------|-------------|--------------|----------------------|---------|
+| [SolidityGo](./registration/SolidityGo.md) | Developer | Looking for teammates | V3Trader | Learning Uniswap V3 by EIP-7702 | @SolidityGo (Telegram) |
 | [Jo 13](./registration/obou07.md) | Solidity Developer | Looking for teammates | SecureEOA | A security-focused implementation of EIP-7702 that enables enhanced transaction validation and recov... | jo00013 (Discord) |
 | [zhitong](./registration/Nickwest.md) | Full-stack Developer |  |  |  | @zk_nick (Telegram) |
 | [brucexu.eth](./registration/Bruce.md) | Developer | Looking for teammates | GasDaddy | Oh Daddy, please pay for my gas fee, thanks. | @brucexu_eth (Telegram) |
