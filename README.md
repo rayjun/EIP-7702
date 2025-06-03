@@ -156,23 +156,23 @@ This isn’t just a fix — it’s a new design space for wallets, dApps, securi
 <table>
     <tr>
         <td align="center" valign="middle">
-            <a href="https://www.ethcatherders.com/" target="_blank">
-                <img src="./images/ECH.png" alt="ECH" width="130" />
-            </a>
-        </td>
-        <td align="center" valign="middle">
             <a href="https://buidlguidl.com/" target="_blank">
                 <img src="./images/buidlguidl.png" alt="buidlguidl" width="130" />
             </a>
         </td>
         <td align="center" valign="middle">
-            <a href="https://dapplearning.org/" target="_blank">
-                <img src="./images/DappLearning.png" alt="DappLearning" width="130" />
+            <a href="https://www.ethcatherders.com/" target="_blank">
+                <img src="./images/ECH.png" alt="ECH" width="130" />
             </a>
         </td>
         <td align="center" valign="middle">
             <a href="https://defihacklabs.io/" target="_blank">
                 <img src="./images/defihacklabs.png" alt="defihacklabs" width="130" />
+            </a>
+        </td>
+        <td align="center" valign="middle">
+            <a href="https://dapplearning.org/" target="_blank">
+                <img src="./images/DappLearning.png" alt="DappLearning" width="130" />
             </a>
         </td>
     </tr>
