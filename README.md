@@ -15,6 +15,22 @@ Bring your creativity, code, and maybe a cup of iced coffee — and help shape t
 
 Stay up to date by joining our Telegram group: <https://t.me/+XFSgo4aUGYA1NWZh>.
 
+## 💬 Meeting Arrangement
+
+#### Topic: EIP-7702 Casual Hackathon Open Day
+Time: Jun 6, 2025 04:00 PM Beijing, Shanghai
+Meeting ID: 869 7504 0056
+Passcode: 952641
+[🔗 Join Zoom Meeting](https://us06web.zoom.us/j/86975040056?pwd=TihzajLlhnVQtEUa4F4sofyFVvxXKH.1)
+
+
+#### Topic: EIP-7702 Casual Hackathon Demo Day
+Time: Jun 8, 2025 04:00 PM Beijing, Shanghai
+Meeting ID: 830 7330 2221
+Passcode: 580438
+[🔗 Join Zoom Meeting](https://us06web.zoom.us/j/83073302221?pwd=tHcdQZXacdZlHol8vF9thl9e95aKIp.1)
+
+
 ## 🌿 What is Casual Hackathon?
 
 Low-cost, casual hackathons that let anyone revel in the pure joy of creating — and spark real innovation in return. Casual Hackathon is an open-source public good created by LXDAO.
