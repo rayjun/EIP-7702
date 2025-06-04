@@ -18,6 +18,7 @@ Stay up to date by joining our Telegram group: <https://t.me/+XFSgo4aUGYA1NWZh>.
 ## 💬 Meeting Arrangement
 
 #### Topic: EIP-7702 Casual Hackathon Open Day
+
 Time: Jun 6, 2025 04:00 PM Beijing, Shanghai
 
 Meeting ID: 869 7504 0056
