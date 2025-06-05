@@ -119,7 +119,7 @@ function App() {
 
                 const authorizationData = {
                   chainId: chainId,
-                  address: '0x6811144a9A21BE99eAc706EA7E4f3Aa99445e2d2', // Target contract
+                  address: '0x0c8717e655B69310f4bBde993eE41254ac61d3A7', // Target contract
                   nonce: nonce.toString(),
                 };
 
@@ -299,7 +299,7 @@ function App() {
                     },
                   ],
                   to: userAddress as `0x${string}`, // Send to user's EOA
-                  data: '0x8129fc1c' as `0x${string}`, // Empty data for simple delegation
+                  data: '0xbc9748a1' as `0x${string}`, // Empty data for simple delegation
                 };
 
                 console.log(
