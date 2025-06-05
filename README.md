@@ -2,7 +2,7 @@
 
 **Account Abstraction** is becoming one of the most transformative topics in the Ethereum ecosystem. The introduction of **EIP-7702** marks a pragmatic and visionary step forward in this domain.
 
-We believe that meaningful innovation doesn’t always come from boardrooms or conference stages — it often starts with a late-night hack or a sudden spark in your code editor.
+We believe that meaningful innovation doesn't always come from boardrooms or conference stages — it often starts with a late-night hack or a sudden spark in your code editor.
 
 Bring your creativity, code, and maybe a cup of iced coffee — and help shape the next chapter of Account Abstraction.
 
@@ -14,6 +14,22 @@ Bring your creativity, code, and maybe a cup of iced coffee — and help shape t
 - Demo day: 8 Jun. Submit on GitHub, live show, fun prizes 🎁
 
 Stay up to date by joining our Telegram group: <https://t.me/+XFSgo4aUGYA1NWZh>.
+
+## 💬 Meeting Arrangement
+
+### 💡 Topic: EIP-7702 Casual Hackathon Open Day
+- Time: Jun 6, 2025 04:00 PM Beijing, Shanghai
+- Meeting ID: 869 7504 0056
+- Passcode: 952641
+- [🔗 Join Zoom Meeting](https://us06web.zoom.us/j/86975040056?pwd=TihzajLlhnVQtEUa4F4sofyFVvxXKH.1)
+
+
+###  🎤 Topic: EIP-7702 Casual Hackathon Demo Day
+- Time: Jun 8, 2025 04:00 PM Beijing, Shanghai
+- Meeting ID: 830 7330 2221
+- Passcode: 580438
+- [🔗 Join Zoom Meeting](https://us06web.zoom.us/j/83073302221?pwd=tHcdQZXacdZlHol8vF9thl9e95aKIp.1)
+
 
 ## 🌿 What is Casual Hackathon?
 
@@ -35,7 +51,7 @@ Low-cost, casual hackathons that let anyone revel in the pure joy of creating �
    - Fork this repository
    - In the [./registration](./registration/) folder, copy the [registration template](./registration/template.md) and create a new file named `[your-github-id].md`
    - Add your participant details to `[your-github-id].md` (please do not edit `template.md`)
-   - Submit a PR — once merged, you’re officially registered 🎉
+   - Submit a PR — once merged, you're officially registered 🎉
 
 2. **How to Build**
 
@@ -51,7 +67,7 @@ Low-cost, casual hackathons that let anyone revel in the pure joy of creating �
 
 ## 👨‍💻 Who Should Join?
 
-This isn’t a bootcamp for beginners — it’s a high-bar, low-ego hackathon designed for:
+This isn't a bootcamp for beginners — it's a high-bar, low-ego hackathon designed for:
 
 - Protocol Engineers
 - Solidity / Vyper Developers
@@ -59,7 +75,7 @@ This isn’t a bootcamp for beginners — it’s a high-bar, low-ego hackathon d
 - Security Researchers
 - Anyone deeply curious about Account Abstraction
 
-If you’re ready to:
+If you're ready to:
 
 - Dive deep into a chosen EIP and build production-ready apps around it.
 - Turn abstract concepts into working code that showcases the latest Ethereum features.
@@ -76,7 +92,7 @@ Key benefits:
 - ✅ **Highly extensible** (supports custom validation logic)
 - ✅ **Improved security model** (avoids permanent delegation risks)
 
-This isn’t just a fix — it’s a new design space for wallets, dApps, security, identity, and permissions.
+This isn't just a fix — it's a new design space for wallets, dApps, security, identity, and permissions.
 
 **Now** is the time to build, test, question, and innovate — hands-on, from the ground up.
 
@@ -99,15 +115,68 @@ This isn’t just a fix — it’s a new design space for wallets, dApps, securi
 - Ethereum core devs / researchers
 - Infra maintainers, wallet & security experts
 
+
+<table>
+    <tr>
+         <td  align="center" valign="middle" width="120">
+            <img src="https://pbs.twimg.com/profile_images/1906994546455822336/OEoYVc1W_400x400.jpg" alt="brucexu_eth" width="50" />
+            Bruce Xu
+        </td>
+        <td>
+             <a href="https://x.com/brucexu_eth" target="_blank">@brucexu_eth</a>
+        </td>
+        <td>
+             ETH x AI | Ethernaut | Cypherpunk-aligned | INTJ | Co-initiator @LXDAO_Official @ethpanda_org | 面向酷炫工作
+        </td>
+    </tr>
+    <tr>
+         <td  align="center" valign="middle">
+            <img src="https://pbs.twimg.com/profile_images/1877066972212715520/kaIja4CS_400x400.jpg" alt="wiasliaw"  width="50" />
+            wiasliaw
+        </td>
+        <td>
+             <a href="https://x.com/wiasliaw" target="_blank">@wiasliaw</a>
+        </td>
+        <td>
+            whitehat in defi hacker labs
+        </td>
+    </tr>
+</table>
+
+**🌟 Guests**
+
+
+<table>
+    <tr>
+         <td  align="center" valign="middle"  width="120">
+            <img src="https://pbs.twimg.com/profile_images/1097527657766535168/lmQ95bkh_400x400.jpg" alt="brucexu_eth" width="50" />
+            Adam Fuller
+        </td>
+        <td>
+             <a href="https://x.com/azacharyf" target="_blank">@azacharyf</a>
+        </td>
+        <td>
+             Product Manager and developer, worked on USDC, The Graph, Scaffold Eth, BuildlGuidl and others. Currently focusing on emerging Ethereum UX and apps
+        </td>
+    </tr>
+</table>
+
+
 ## 👥 Participants
 
 | Name | Role | Team Status | Project Name | Project Description | Contact |
 |------|------|-------------|--------------|----------------------|---------|
+| [nonso7](./registration/nonso7.md) | Developer | Looking for teammates | Asset Guardian 77022 | Utilizing EIP-7702 technology to rescue assets from compromised private key accounts and provide sec... | @taberah (Telegram) |
 | [SolidityGo](./registration/SolidityGo.md) | Developer | Looking for teammates | V3Trader | Learning Uniswap V3 by EIP-7702 | @SolidityGo (Telegram) |
+| [Keylen](./registration/Keylen.md) | Frontend Developer | Solo participation | 7702-Transaction Aggregator | A trading aggregator that can be customized with low code | @Keylen3_14 (Telegram) |
 | [Jo 13](./registration/obou07.md) | Solidity Developer | Looking for teammates | SecureEOA | A security-focused implementation of EIP-7702 that enables enhanced transaction validation and recov... | jo00013 (Discord) |
 | [Caos](./registration/Caosbad.md) | Full-stack Developer | Looking for teammates |  |  | @caosbad (Telegram) |
 | [zhitong](./registration/Nickwest.md) | Full-stack Developer |  |  |  | @zk_nick (Telegram) |
+| [BinaryFlow](./registration/hotbroker.md) | Solidity Developer |  | fsmeme | flash sell meme | 5771067@qq.com (wechat veryverybad) |
+| [Ray](./registration/rayjun.md) | Backend Developer | Looking for teammates | EDex | Your EOA is a DEX, so just swap | @rayoo_eth (Telegram) |
 | [brucexu.eth](./registration/Bruce.md) | Developer | Looking for teammates | GasDaddy | Oh Daddy, please pay for my gas fee, thanks. | @brucexu_eth (Telegram) |
+| [yunsik Ham](./registration/ham3798.md) | Full-stack Developer | Solo participation | zkPassSession | simple poc for grants temporary on-chain access to a specific hardware device by verifying both WebA... | @yunsikkkk (Telegram) |
+| [0xKoiner](./registration/0xKoiner.md) | Solidity Developer | Blockchain Researcher | Solo participation | OPF7702 | All-in-one EIP-7702 powered smart accounts with session key support | koiner_0x (Telegram) |
 | [Bo](./registration/Bo.md) | Full-stack Developer | Looking for teammates | Asset Guardian 7702 | Utilizing EIP-7702 technology to rescue assets from compromised private key accounts and provide sec... | Bo-00 (GitHub) |
 | [Coooder](./registration/Coooder.md) | Frontend Developer | Looking for teammates | 7702-Defender | 7702-Defender is a dApp that defends against attacks on EIP-7702 accounts. | @Coooder_Crypto (Telegram) |
 
@@ -133,6 +202,8 @@ This isn’t just a fix — it’s a new design space for wallets, dApps, securi
         </td>
     </tr>
 </table>
+
+
 
 ## 💰 Sponsors
 
