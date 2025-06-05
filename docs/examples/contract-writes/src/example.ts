@@ -1,8 +1,7 @@
-import { walletClient } from './config.js';
+import { walletClient, relay } from './config.js';
 import { abi, contractAddress } from './contract.js';
 import { privateKeyToAccount } from 'viem/accounts';
 import { sepolia } from 'viem/chains';
-import { relay } from './config.js';
 
 async function main() {
   const eoa = privateKeyToAccount(process.env.EOA_PRIVATE_KEY as `0x${string}`);
@@ -14,18 +13,7 @@ async function main() {
 
   console.log('authorization', authorization);
 
-  // self execute delegation contract
-  // const hash = await walletClient.writeContract({
-  //   abi,
-  //   address: eoa.address,
-  //   account: eoa,
-  //   chain: sepolia,
-  //   authorizationList: [authorization],
-  //   functionName: 'initialize',
-  // });
-
-  // execute delegation contract by relay
-  const hash = await walletClient.writeContract({
+  const initHash = await walletClient.writeContract({
     abi,
     address: eoa.address,
     account: relay,
@@ -34,16 +22,21 @@ async function main() {
     functionName: 'initialize',
   });
 
-  // const hash = await walletClient.writeContract({
-  //   abi,
-  //   address: eoa.address,
-  //   account: eoa,
-  //   chain: sepolia,
-  //   authorizationList: [authorization],
-  //   functionName: 'ping',
-  // });
+  console.log(
+    `Transaction hash for initialize: https://sepolia.etherscan.io/tx/${initHash}`
+  );
 
-  console.log(`Transaction hash: https://sepolia.etherscan.io/tx/${hash}`);
+  // no need to sign authorization again
+  const hash = await walletClient.writeContract({
+    abi,
+    address: eoa.address,
+    chain: sepolia,
+    functionName: 'ping',
+  });
+
+  console.log(
+    `Transaction hash for ping: https://sepolia.etherscan.io/tx/${hash}`
+  );
 }
 
 main().catch(console.error);
