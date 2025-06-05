@@ -170,6 +170,7 @@ This isn't just a fix — it's a new design space for wallets, dApps, security, 
 | [Jo 13](./registration/obou07.md) | Solidity Developer | Looking for teammates | SecureEOA | A security-focused implementation of EIP-7702 that enables enhanced transaction validation and recov... | jo00013 (Discord) |
 | [Caos](./registration/Caosbad.md) | Full-stack Developer | Looking for teammates |  |  | @caosbad (Telegram) |
 | [zhitong](./registration/Nickwest.md) | Full-stack Developer |  |  |  | @zk_nick (Telegram) |
+| [BinaryFlow](./registration/hotbroker.md) | Solidity Developer |  | fsmeme | flash sell meme | 5771067@qq.com (wechat veryverybad) |
 | [Ray](./registration/rayjun.md) | Backend Developer | Looking for teammates | EDex | Your EOA is a DEX, so just swap | @rayoo_eth (Telegram) |
 | [brucexu.eth](./registration/Bruce.md) | Developer | Looking for teammates | GasDaddy | Oh Daddy, please pay for my gas fee, thanks. | @brucexu_eth (Telegram) |
 | [yunsik Ham](./registration/ham3798.md) | Full-stack Developer | Solo participation | zkPassSession | simple poc for grants temporary on-chain access to a specific hardware device by verifying both WebA... | @yunsikkkk (Telegram) |
