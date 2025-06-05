@@ -2,7 +2,7 @@
 
 **Account Abstraction** is becoming one of the most transformative topics in the Ethereum ecosystem. The introduction of **EIP-7702** marks a pragmatic and visionary step forward in this domain.
 
-We believe that meaningful innovation doesn’t always come from boardrooms or conference stages — it often starts with a late-night hack or a sudden spark in your code editor.
+We believe that meaningful innovation doesn't always come from boardrooms or conference stages — it often starts with a late-night hack or a sudden spark in your code editor.
 
 Bring your creativity, code, and maybe a cup of iced coffee — and help shape the next chapter of Account Abstraction.
 
@@ -51,7 +51,7 @@ Low-cost, casual hackathons that let anyone revel in the pure joy of creating �
    - Fork this repository
    - In the [./registration](./registration/) folder, copy the [registration template](./registration/template.md) and create a new file named `[your-github-id].md`
    - Add your participant details to `[your-github-id].md` (please do not edit `template.md`)
-   - Submit a PR — once merged, you’re officially registered 🎉
+   - Submit a PR — once merged, you're officially registered 🎉
 
 2. **How to Build**
 
@@ -67,7 +67,7 @@ Low-cost, casual hackathons that let anyone revel in the pure joy of creating �
 
 ## 👨‍💻 Who Should Join?
 
-This isn’t a bootcamp for beginners — it’s a high-bar, low-ego hackathon designed for:
+This isn't a bootcamp for beginners — it's a high-bar, low-ego hackathon designed for:
 
 - Protocol Engineers
 - Solidity / Vyper Developers
@@ -75,7 +75,7 @@ This isn’t a bootcamp for beginners — it’s a high-bar, low-ego hackathon d
 - Security Researchers
 - Anyone deeply curious about Account Abstraction
 
-If you’re ready to:
+If you're ready to:
 
 - Dive deep into a chosen EIP and build production-ready apps around it.
 - Turn abstract concepts into working code that showcases the latest Ethereum features.
@@ -92,7 +92,7 @@ Key benefits:
 - ✅ **Highly extensible** (supports custom validation logic)
 - ✅ **Improved security model** (avoids permanent delegation risks)
 
-This isn’t just a fix — it’s a new design space for wallets, dApps, security, identity, and permissions.
+This isn't just a fix — it's a new design space for wallets, dApps, security, identity, and permissions.
 
 **Now** is the time to build, test, question, and innovate — hands-on, from the ground up.
 
@@ -115,6 +115,53 @@ This isn’t just a fix — it’s a new design space for wallets, dApps, securi
 - Ethereum core devs / researchers
 - Infra maintainers, wallet & security experts
 
+
+<table>
+    <tr>
+         <td  align="center" valign="middle" width="100">
+            <img src="https://pbs.twimg.com/profile_images/1906994546455822336/OEoYVc1W_400x400.jpg" alt="brucexu_eth" width="50" />
+            Bruce Xu
+        </td>
+        <td>
+             <a href="https://x.com/brucexu_eth" target="_blank">@brucexu_eth</a>
+        </td>
+        <td>
+             ETH x AI | Ethernaut | Cypherpunk-aligned | INTJ | Co-initiator @LXDAO_Official @ethpanda_org | 面向酷炫工作
+        </td>
+    </tr>
+    <tr>
+         <td  align="center" valign="middle">
+            <img src="https://pbs.twimg.com/profile_images/1877066972212715520/kaIja4CS_400x400.jpg" alt="wiasliaw"  width="50" />
+            wiasliaw
+        </td>
+        <td>
+             <a href="https://x.com/wiasliaw" target="_blank">@wiasliaw</a>
+        </td>
+        <td>
+            whitehat in defi hacker labs
+        </td>
+    </tr>
+</table>
+
+**🌟 Guests**
+
+
+<table>
+    <tr>
+         <td  align="center" valign="middle"  width="100">
+            <img src="https://pbs.twimg.com/profile_images/1097527657766535168/lmQ95bkh_400x400.jpg" alt="brucexu_eth" width="50" />
+            Adam Fuller
+        </td>
+        <td>
+             <a href="https://x.com/azacharyf" target="_blank">@azacharyf</a>
+        </td>
+        <td>
+             Product Manager and developer, worked on USDC, The Graph, Scaffold Eth, BuildlGuidl and others. Currently focusing on emerging Ethereum UX and apps
+        </td>
+    </tr>
+</table>
+
+
 ## 👥 Participants
 
 | Name | Role | Team Status | Project Name | Project Description | Contact |
@@ -128,6 +175,7 @@ This isn’t just a fix — it’s a new design space for wallets, dApps, securi
 | [0xKoiner](./registration/0xKoiner.md) | Solidity Developer | Blockchain Researcher | Solo participation | OPF7702 | All-in-one EIP-7702 powered smart accounts with session key support | koiner_0x (Telegram) |
 | [Bo](./registration/Bo.md) | Full-stack Developer | Looking for teammates | Asset Guardian 7702 | Utilizing EIP-7702 technology to rescue assets from compromised private key accounts and provide sec... | Bo-00 (GitHub) |
 | [Coooder](./registration/Coooder.md) | Frontend Developer | Looking for teammates | 7702-Defender | 7702-Defender is a dApp that defends against attacks on EIP-7702 accounts. | @Coooder_Crypto (Telegram) |
+
 
 ## 📚 Resources
 
@@ -151,6 +199,8 @@ This isn’t just a fix — it’s a new design space for wallets, dApps, securi
         </td>
     </tr>
 </table>
+
+
 
 ## 💰 Sponsors
 
