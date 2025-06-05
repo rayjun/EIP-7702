@@ -118,7 +118,7 @@ This isn't just a fix — it's a new design space for wallets, dApps, security, 
 
 <table>
     <tr>
-         <td  align="center" valign="middle" width="100">
+         <td  align="center" valign="middle" width="120">
             <img src="https://pbs.twimg.com/profile_images/1906994546455822336/OEoYVc1W_400x400.jpg" alt="brucexu_eth" width="50" />
             Bruce Xu
         </td>
@@ -148,7 +148,7 @@ This isn't just a fix — it's a new design space for wallets, dApps, security, 
 
 <table>
     <tr>
-         <td  align="center" valign="middle"  width="100">
+         <td  align="center" valign="middle"  width="120">
             <img src="https://pbs.twimg.com/profile_images/1097527657766535168/lmQ95bkh_400x400.jpg" alt="brucexu_eth" width="50" />
             Adam Fuller
         </td>
