@@ -167,6 +167,7 @@ This isn't just a fix — it's a new design space for wallets, dApps, security, 
 | Name | Role | Team Status | Project Name | Project Description | Contact |
 |------|------|-------------|--------------|----------------------|---------|
 | [SolidityGo](./registration/SolidityGo.md) | Developer | Looking for teammates | V3Trader | Learning Uniswap V3 by EIP-7702 | @SolidityGo (Telegram) |
+| [Keylen](./registration/Keylen.md) | Frontend Developer | Solo participation | 7702-Transaction Aggregator | A trading aggregator that can be customized with low code | @Keylen3_14 (Telegram) |
 | [Jo 13](./registration/obou07.md) | Solidity Developer | Looking for teammates | SecureEOA | A security-focused implementation of EIP-7702 that enables enhanced transaction validation and recov... | jo00013 (Discord) |
 | [Caos](./registration/Caosbad.md) | Full-stack Developer | Looking for teammates |  |  | @caosbad (Telegram) |
 | [zhitong](./registration/Nickwest.md) | Full-stack Developer |  |  |  | @zk_nick (Telegram) |
