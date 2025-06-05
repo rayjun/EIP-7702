@@ -129,6 +129,18 @@ This isn't just a fix — it's a new design space for wallets, dApps, security, 
              ETH x AI | Ethernaut | Cypherpunk-aligned | INTJ | Co-initiator @LXDAO_Official @ethpanda_org | 面向酷炫工作
         </td>
     </tr>
+     <tr>
+         <td  align="center" valign="middle" width="120">
+            <img src="https://pbs.twimg.com/profile_images/1753136367763398656/HWtghbrf_400x400.jpg" alt="ZainanZhou" width="50" />
+            Victor Zhou
+        </td>
+        <td>
+             <a href="https://x.com/ZainanZhou" target="_blank">@ZainanZhou</a>
+        </td>
+        <td>
+            Ethereum EIP Guru, Guardian of Protocol Security, ERC Standards Pioneer, Smart Contract Security Maestro
+        </td>
+    </tr>
     <tr>
          <td  align="center" valign="middle">
             <img src="https://pbs.twimg.com/profile_images/1877066972212715520/kaIja4CS_400x400.jpg" alt="wiasliaw"  width="50" />
@@ -138,7 +150,7 @@ This isn't just a fix — it's a new design space for wallets, dApps, security, 
              <a href="https://x.com/wiasliaw" target="_blank">@wiasliaw</a>
         </td>
         <td>
-            whitehat in defi hacker labs
+            White Hat Hunter in DeFi’s Dark Forest, DeFiHackLabs Vigilante, Slayer of Smart Contract Vulnerabilities  
         </td>
     </tr>
 </table>
