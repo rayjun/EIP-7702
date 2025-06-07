@@ -11,7 +11,7 @@ Bring your creativity, code, and maybe a cup of iced coffee — and help shape t
 - Open registration: 1-6 Jun. Learn from repo (or add more docs, ideas, examples!) + pop-up workshops
 - Open Day: 6 Jun. Deep-dive 7702, Q&A, team match
 - Hacking: 6 Jun - 8 Jun. Couch-friendly hacking weekend
-- Demo day: 8 Jun. Submit on GitHub, live show, fun prizes 🎁
+- Demo day: 8 Jun. Submit on GitHub, live show, fun prizes
 
 Stay up to date by joining our Telegram group: <https://t.me/+XFSgo4aUGYA1NWZh>.
 
@@ -81,6 +81,64 @@ If you're ready to:
 - Turn abstract concepts into working code that showcases the latest Ethereum features.
 
 **This hackathon is for you.**
+
+## 🎁 Awards and Prizes
+
+**📝 1. Project Submission Requirements**
+
+Deadline: Before 4:00 PM (GMT+8), June 8 (Demo Day)
+
+Please submit the following materials via the designated GitHub form before the deadline:
+
+- ✅ Project GitHub Repository (must be open-source)
+- ✅ Presentation Slides (PDF or slide format)
+- ✅ Project Summary (including feature overview, use cases, and key highlights)
+- ✅ Optional: Demo video or user guide
+- ✅ Contact Information for each core team member (Telegram / Email / Wallet Address)
+
+
+**🎤 2. Demo Day Presentation Guidelines**
+
+Time: 4:00 PM (GMT+8), June 8
+- Each team will have 5–8 minutes to present—please manage your time accordingly
+- Suggested content for the demo:
+  - Project introduction
+  - Feature demonstration
+  - Technical insights
+- Projects will present in the order of submission
+- A Zoom link will be sent in advance to the email address used during registration
+
+
+**🏆 3. Awards & Prizes**
+- Judging Panel: Composed of Ethereum core developers and researchers
+- Everyone Wins: All submitted projects will receive a commemorative NFT award
+- Example Award Categories:
+  - Most Creative Project
+  - Best Integration
+  - Most Practical Application
+  - Technical Excellence
+  - Prize Details:
+    - OneKey Wallet:
+        - Must provide a valid shipping address
+        - Must record an unboxing video and post it on social media tagging @OneKey
+    - BGA USDT Airdrop:
+        - Project must be open-source
+        - Provide a live demo
+        - Share a project showcase post that includes a photo of your team with the BGA logo, tagging @BGA on social media Exclusively judged by BGA
+
+🎁 All prizes will be coordinated by LXDAO and announced via the official GitHub repo.
+
+
+
+**🎙️ 4. Post-Hackathon Interviews**
+- Selected teams will be invited for a 5 – 10 minute online interview after the hackathon
+- Topics may include:
+  - Project vision
+  - Team collaboration
+  - Development experience
+- Interview videos or summaries will be shared across social media and community platforms for wider exposure
+
+
 
 ## 🧩 Why 7702? Why Now?
 
