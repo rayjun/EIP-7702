@@ -145,5 +145,39 @@ export const sbtAbi = [
   },
 ] as const;
 
+export const gasDaddyAbi = [
+  {
+    type: 'function',
+    name: 'mintSBT',
+    inputs: [{ name: 'sbtContract', type: 'address' }],
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    name: 'getContext',
+    inputs: [],
+    outputs: [
+      { name: 'msgSender', type: 'address' },
+      { name: 'contractThis', type: 'address' },
+      { name: 'txOrigin', type: 'address' },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'event',
+    name: 'SBTMintSponsored',
+    inputs: [
+      { name: 'user', type: 'address', indexed: true },
+      { name: 'sbtContract', type: 'address', indexed: true },
+      { name: 'sponsor', type: 'address', indexed: true },
+    ],
+  },
+] as const;
+
+// Deploy new contract and update this address after deployment
+export const gasDaddyContractAddress =
+  '0xf8D3C1911d8b65FE4DE0604Bed26C63CABd08779';
+
 // Deploy new contract and update this address after deployment
 export const sbtContractAddress = '0x639C5620dB9ec2928f426AA8f59fF50eeF67E378';

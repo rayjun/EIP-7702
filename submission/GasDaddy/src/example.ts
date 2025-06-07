@@ -4,26 +4,80 @@ import {
   eoa_sponsor,
   eoa_user,
 } from './config.js';
-import { abi, sbtContractAddress, sbtAbi } from './contract.js';
+import {
+  gasDaddyAbi,
+  sbtContractAddress,
+  gasDaddyContractAddress,
+} from './contract.js';
 import { sepolia } from 'viem/chains';
-import { waitForTransactionReceipt, readContract } from 'viem/actions';
+import { waitForTransactionReceipt } from 'viem/actions';
 
 async function main() {
   console.log('🏦 Sponsor EOA: ', eoa_sponsor.address);
   console.log('👤 User EOA: ', eoa_user.address);
   console.log('📄 SBT Contract: ', sbtContractAddress);
+  console.log('🎯 GasDaddy Contract: ', gasDaddyContractAddress);
 
-  // First: User EOA mint SBT in a normal way for comparison
-  const mintSBT = await userWalletClient.writeContract({
-    abi: sbtAbi,
-    address: '0x639C5620dB9ec2928f426AA8f59fF50eeF67E378',
+  // EIP-7702 Gas Sponsorship Flow
+  console.log('\n🚀 Starting EIP-7702 Gas Sponsorship Flow...');
+
+  // Step 1: User EOA creates EIP-7702 authorization (offline operation, no gas required)
+  console.log('\n📝 Step 1: User EOA signs EIP-7702 authorization...');
+  const authorization = await userWalletClient.signAuthorization({
     account: eoa_user,
-    chain: sepolia,
-    functionName: 'mint',
+    contractAddress: gasDaddyContractAddress, // Authorization to use GasDaddy contract code
   });
 
-  console.log('🎉 SBT minted!');
-  console.log(`🔗 Transaction: https://sepolia.etherscan.io/tx/${mintSBT}`);
+  console.log('✅ Authorization signed:', {
+    chainId: authorization.chainId,
+    address: authorization.address,
+    nonce: authorization.nonce,
+  });
+
+  // Step 2: Sponsor EOA executes transaction to User EOA address
+  console.log('\n💰 Step 2: Sponsor executes transaction on behalf of user...');
+
+  // 🎯 Key: Send transaction to User's EOA address, not GasDaddy contract address
+  const hash = await sponsorWalletClient.writeContract({
+    abi: gasDaddyAbi,
+    address: eoa_user.address, // Send to User's EOA address
+    account: eoa_sponsor, // Sponsor pays gas
+    chain: sepolia,
+    authorizationList: [authorization], // Include User's authorization
+    functionName: 'mintSBT',
+    args: [sbtContractAddress], // SBT contract address
+  });
+
+  console.log('\n🎉 Transaction sent!');
+  console.log(`💸 Gas paid by: ${eoa_sponsor.address}`);
+  console.log(`🎭 Function executed at: ${eoa_user.address} (User's EOA)`);
+  console.log(`📋 Using contract code from: ${gasDaddyContractAddress}`);
+  console.log(`🏆 SBT will be minted to: ${eoa_user.address}`);
+  console.log(`🔗 Transaction: https://sepolia.etherscan.io/tx/${hash}`);
+
+  // Step 3: Wait for transaction confirmation
+  console.log('\n⏳ Waiting for confirmation...');
+  const receipt = await waitForTransactionReceipt(sponsorWalletClient, {
+    hash,
+  });
+
+  console.log(`✅ Transaction confirmed in block: ${receipt.blockNumber}`);
+  console.log(`⛽ Gas used: ${receipt.gasUsed}`);
+
+  // Check for events
+  const mintEvent = receipt.logs.find(
+    (log) => log.topics[0] === '0x...' // SBTMintSponsored event signature
+  );
+
+  if (mintEvent) {
+    console.log('🎊 SBT successfully minted to user via gas sponsorship!');
+  }
+
+  console.log('\n📊 Summary:');
+  console.log(`- User (${eoa_user.address}) received SBT without paying gas`);
+  console.log(`- Sponsor (${eoa_sponsor.address}) paid for the gas`);
+  console.log(`- Thanks to EIP-7702, transaction executed in user's context`);
+  console.log(`- The sponsor is now officially a "Gas Daddy" 👨‍👧‍👦`);
 }
 
 main().catch(console.error);
