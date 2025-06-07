@@ -106,6 +106,8 @@ npm start
 - Future feature 1
 - Future feature 2
 
-## 📝 License
+## Notes
+
+- Simple SBT for testing: https://sepolia.etherscan.io/address/0x639C5620dB9ec2928f426AA8f59fF50eeF67E378
 
 <!-- Specify your project license -->
