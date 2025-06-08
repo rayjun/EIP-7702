@@ -1,13 +1,7 @@
 import { useState } from 'react';
 import { useAccount, useConnect, useDisconnect, useSignMessage } from 'wagmi';
-import {
-  encodeFunctionData,
-  createPublicClient,
-  http,
-  keccak256,
-  concatHex,
-  toHex,
-} from 'viem';
+import { encodeFunctionData, createPublicClient, http } from 'viem';
+import { hashAuthorization, verifyAuthorization } from 'viem/utils';
 import { useWalletClient } from 'wagmi';
 import { sepolia } from 'viem/chains';
 import {
@@ -53,68 +47,33 @@ function App() {
     connect({ connector });
   };
 
-  // TODO this is not working, viem doesn't support signAuthorization with JSON-RPC account, need to build the params manually
   const handleCreateAuthorization = async () => {
     if (!address) return;
 
     setIsLoading(true);
     try {
       // Get the current nonce for the user's EOA
-      // This is critical for EIP-7702: nonce must be the actual transaction count
-      // from the user's account, not a random number or timestamp
       const nonce = await publicClient.getTransactionCount({
         address: address,
       });
 
-      // Since wagmi walletClient uses JSON-RPC account which doesn't support signAuthorization,
-      // we need to manually construct the EIP-7702 authorization using signMessage
       if (!walletClient) {
         throw new Error('Wallet client is not available');
       }
 
-      // Construct EIP-7702 authorization message according to the standard
-      // The message format is: keccak256(0x05 || RLP([chainId, contractAddress, nonce]))
-      const chainId = 11155111;
+      const chainId = 11155111; // Sepolia
 
-      // EIP-7702 Magic prefix
-      const MAGIC = '0x05';
+      // Use viem's hashAuthorization utility to create the authorization hash
+      // This handles the RLP encoding and EIP-7702 formatting internally
+      const authorizationHash = hashAuthorization({
+        contractAddress: gasDaddyContractAddress,
+        chainId: chainId,
+        nonce: nonce,
+      });
 
-      // Simple RLP encoding for [chainId, contractAddress, nonce]
-      // Based on EIP-7702 specification: msg = keccak256(0x05 || RLP([chain_id, address, nonce]))
-      function encodeRlpList(items: (bigint | string)[]): string {
-        let encoded = '';
-        for (const item of items) {
-          if (typeof item === 'bigint') {
-            const hex = item.toString(16);
-            const padded = hex.length % 2 === 0 ? hex : '0' + hex;
-            if (padded.length <= 2) {
-              encoded += padded.padStart(2, '0');
-            } else {
-              const length = (padded.length / 2).toString(16).padStart(2, '0');
-              encoded += '8' + length + padded;
-            }
-          } else if (typeof item === 'string') {
-            const hex = item.slice(2); // remove 0x prefix
-            encoded += '94' + hex; // 0x94 is RLP encoding for 20-byte address
-          }
-        }
-        // Add list prefix
-        const totalLength = (encoded.length / 2).toString(16).padStart(2, '0');
-        return '0xc' + totalLength + encoded;
-      }
-
-      const rlpPayload = encodeRlpList([
-        BigInt(chainId),
-        gasDaddyContractAddress,
-        BigInt(nonce),
-      ]) as `0x${string}`;
-
-      // Create the digest: keccak256(MAGIC || RLP_payload)
-      const digest = keccak256(concatHex([MAGIC, rlpPayload]));
-
-      // Sign the digest
+      // Sign the authorization hash using the wallet
       const signature = await walletClient.signMessage({
-        message: { raw: digest },
+        message: { raw: authorizationHash },
       });
 
       // Parse signature components (r, s, v)
@@ -125,6 +84,24 @@ function App() {
 
       const authorization = {
         chainId: chainId,
+        address: gasDaddyContractAddress,
+        nonce: nonce,
+        r: r,
+        s: s,
+        yParity: yParity,
+      };
+
+      // todo cannot generate authorization from JSON-RPC account
+      // Verify the authorization using viem's verifyAuthorization utility
+      const valid = await verifyAuthorization({
+        address: address,
+        authorization: authorization,
+      });
+      console.log('✅ Authorization verified:', valid);
+
+      // Convert back to the backend expected format
+      const backendAuthorization = {
+        chainId: chainId,
         contractAddress: gasDaddyContractAddress,
         nonce: nonce,
         r: r,
@@ -132,8 +109,8 @@ function App() {
         yParity: yParity,
       };
 
-      setAuthorization(authorization);
-      console.log('Authorization created and signed:', authorization);
+      setAuthorization(backendAuthorization);
+      console.log('Authorization created and signed:', backendAuthorization);
     } catch (error) {
       console.error('Failed to create authorization:', error);
       alert('Failed to sign authorization. Please try again.');

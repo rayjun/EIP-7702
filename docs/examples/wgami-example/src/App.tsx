@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { verifyAuthorization } from 'viem/utils';
 import {
   useAccount,
   useConnect,
@@ -158,6 +159,20 @@ function App() {
                   s,
                   yParity,
                 };
+
+                const valid = await verifyAuthorization({
+                  address: account.address,
+                  authorization: {
+                    address: authorizationData.address as `0x${string}`,
+                    chainId: authorizationData.chainId,
+                    nonce: parseInt(authorizationData.nonce),
+                    r: completeAuthorization.r as `0x${string}`,
+                    s: completeAuthorization.s as `0x${string}`,
+                    v: BigInt(completeAuthorization.yParity === 0 ? 27 : 28),
+                    yParity: completeAuthorization.yParity,
+                  },
+                });
+                console.log('✅ Authorization verified:', valid);
 
                 setAuthorization(completeAuthorization);
                 console.log('Authorization generated:', completeAuthorization);
