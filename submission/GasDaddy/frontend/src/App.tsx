@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useAccount, useConnect, useDisconnect, useSignMessage } from 'wagmi';
 import { encodeFunctionData, createPublicClient, http } from 'viem';
 import { hashAuthorization, verifyAuthorization } from 'viem/utils';
@@ -42,6 +42,11 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [txHash, setTxHash] = useState<string>('');
   const [sponsorInfo, setSponsorInfo] = useState<any>(null);
+  const [selectedContract, setSelectedContract] = useState<string>(
+    '0x639C5620dB9ec2928f426AA8f59fF50eeF67E378'
+  );
+  const [selectedMethod, setSelectedMethod] = useState<string>('mint');
+  const [shareUrl, setShareUrl] = useState<string>('');
 
   const handleConnect = (connector: any) => {
     connect({ connector });
@@ -171,6 +176,21 @@ function App() {
     }
   };
 
+  // Generate URL when address or selections change
+  useEffect(() => {
+    if (address && selectedContract && selectedMethod) {
+      // Encode the function call data (for mint function with no parameters)
+      const data = encodeFunctionData({
+        abi: [{ name: 'mint', type: 'function', inputs: [], outputs: [] }],
+        functionName: selectedMethod,
+      });
+
+      const currentUrl = window.location.origin + window.location.pathname;
+      const url = `${currentUrl}?payforme=${address}&targetcontract=${selectedContract}&method=${selectedMethod}&data=${data}`;
+      setShareUrl(url);
+    }
+  }, [address, selectedContract, selectedMethod]);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-gray-100 flex items-center justify-center p-4">
       <div className="w-full max-w-md space-y-4">
@@ -297,7 +317,7 @@ function App() {
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                       <div className="flex h-6 w-6 items-center justify-center rounded-full bg-green-100 text-green-600 text-xs font-bold">
-                        2
+                        1.1
                       </div>
                       Join GasDaddy Plan
                     </CardTitle>
@@ -328,6 +348,82 @@ function App() {
                         <p className="text-green-600 text-xs font-mono mt-1 truncate">
                           {txHash}
                         </p>
+                      </div>
+                    )}
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <div className="flex h-6 w-6 items-center justify-center rounded-full bg-purple-100 text-purple-600 text-xs font-bold">
+                        2
+                      </div>
+                      Find a Gas Daddy for my call
+                    </CardTitle>
+                    <CardDescription>
+                      Select a contract and method to interact with (this might
+                      be done by Chrome extension or dapp):
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium">
+                        Contract Address
+                      </label>
+                      <select
+                        value={selectedContract}
+                        onChange={(e) => setSelectedContract(e.target.value)}
+                        className="w-full p-2 border border-gray-300 rounded-md text-sm"
+                      >
+                        <option value="0x639C5620dB9ec2928f426AA8f59fF50eeF67E378">
+                          0x639C5620dB9ec2928f426AA8f59fF50eeF67E378
+                        </option>
+                        <option value="0x7f89c8b3F4D3A6b6d09172811747144d070410B7">
+                          0x7f89c8b3F4D3A6b6d09172811747144d070410B7
+                        </option>
+                      </select>
+                    </div>
+
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium">Method</label>
+                      <select
+                        value={selectedMethod}
+                        onChange={(e) => setSelectedMethod(e.target.value)}
+                        className="w-full p-2 border border-gray-300 rounded-md text-sm"
+                      >
+                        <option value="mint">mint</option>
+                      </select>
+                    </div>
+
+                    {address && shareUrl && (
+                      <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                        <p className="text-sm text-blue-800 mb-3">
+                          I want to call{' '}
+                          <span className="font-mono font-semibold">
+                            {selectedContract}
+                          </span>{' '}
+                          method{' '}
+                          <span className="font-mono font-semibold">
+                            {selectedMethod}
+                          </span>{' '}
+                          but I don't have gas to operate. Who can help me? If
+                          you pay the gas for me, I'll call you daddy.
+                        </p>
+                        <p className="text-xs text-blue-600 mb-2">
+                          Share this URL:
+                        </p>
+                        <div className="bg-white p-2 rounded border text-xs font-mono break-all">
+                          {shareUrl}
+                        </div>
+                        <button
+                          onClick={() =>
+                            navigator.clipboard.writeText(shareUrl)
+                          }
+                          className="mt-2 px-3 py-1 bg-blue-600 text-white text-xs rounded hover:bg-blue-700"
+                        >
+                          Copy URL
+                        </button>
                       </div>
                     )}
                   </CardContent>
