@@ -5,8 +5,8 @@ import {
   createPublicClient,
   http,
   keccak256,
-  encodeAbiParameters,
-  parseAbiParameters,
+  concatHex,
+  toHex,
 } from 'viem';
 import { useWalletClient } from 'wagmi';
 import { sepolia } from 'viem/chains';
@@ -53,6 +53,7 @@ function App() {
     connect({ connector });
   };
 
+  // TODO this is not working, viem doesn't support signAuthorization with JSON-RPC account, need to build the params manually
   const handleCreateAuthorization = async () => {
     if (!address) return;
 
@@ -72,18 +73,48 @@ function App() {
       }
 
       // Construct EIP-7702 authorization message according to the standard
-      // The message format is: keccak256(abi.encodePacked(chainId, contractAddress, nonce))
+      // The message format is: keccak256(0x05 || RLP([chainId, contractAddress, nonce]))
       const chainId = 11155111;
-      const encodedAuth = encodeAbiParameters(
-        parseAbiParameters('uint256, address, uint256'),
-        [BigInt(chainId), gasDaddyContractAddress, BigInt(nonce)]
-      );
 
-      const authHash = keccak256(encodedAuth);
+      // EIP-7702 Magic prefix
+      const MAGIC = '0x05';
 
-      // Sign the authorization hash
+      // Simple RLP encoding for [chainId, contractAddress, nonce]
+      // Based on EIP-7702 specification: msg = keccak256(0x05 || RLP([chain_id, address, nonce]))
+      function encodeRlpList(items: (bigint | string)[]): string {
+        let encoded = '';
+        for (const item of items) {
+          if (typeof item === 'bigint') {
+            const hex = item.toString(16);
+            const padded = hex.length % 2 === 0 ? hex : '0' + hex;
+            if (padded.length <= 2) {
+              encoded += padded.padStart(2, '0');
+            } else {
+              const length = (padded.length / 2).toString(16).padStart(2, '0');
+              encoded += '8' + length + padded;
+            }
+          } else if (typeof item === 'string') {
+            const hex = item.slice(2); // remove 0x prefix
+            encoded += '94' + hex; // 0x94 is RLP encoding for 20-byte address
+          }
+        }
+        // Add list prefix
+        const totalLength = (encoded.length / 2).toString(16).padStart(2, '0');
+        return '0xc' + totalLength + encoded;
+      }
+
+      const rlpPayload = encodeRlpList([
+        BigInt(chainId),
+        gasDaddyContractAddress,
+        BigInt(nonce),
+      ]) as `0x${string}`;
+
+      // Create the digest: keccak256(MAGIC || RLP_payload)
+      const digest = keccak256(concatHex([MAGIC, rlpPayload]));
+
+      // Sign the digest
       const signature = await walletClient.signMessage({
-        message: { raw: authHash },
+        message: { raw: digest },
       });
 
       // Parse signature components (r, s, v)
