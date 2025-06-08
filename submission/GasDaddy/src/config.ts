@@ -17,7 +17,7 @@ export const sponsorWalletClient = createWalletClient({
   transport: http(),
 });
 
-// 用于 EOA2 签署授权的 wallet client
+// Wallet client for EOA2 to sign authorization
 export const userWalletClient = createWalletClient({
   account: eoa_user,
   chain: sepolia,

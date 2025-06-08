@@ -1,7 +1,15 @@
 import { useState } from 'react';
-import { useAccount, useConnect, useDisconnect } from 'wagmi';
+import { useAccount, useConnect, useDisconnect, useSignMessage } from 'wagmi';
 import { encodeFunctionData } from 'viem';
-import { Wallet, Zap, CheckCircle } from 'lucide-react';
+import {
+  Wallet,
+  Zap,
+  CheckCircle,
+  Users,
+  HandHeart,
+  ToggleLeft,
+  ToggleRight,
+} from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -10,21 +18,21 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import {
-  gasDaddyAbi,
-  sbtAbi,
-  gasDaddyContractAddress,
-  sbtContractAddress,
-} from './contracts';
+import { gasDaddyAbi, gasDaddyContractAddress } from './contracts';
+
+const API_BASE = 'http://localhost:3001';
 
 function App() {
   const { address, isConnected } = useAccount();
   const { connect, connectors } = useConnect();
   const { disconnect } = useDisconnect();
+  const { signMessageAsync } = useSignMessage();
 
+  const [mode, setMode] = useState<'user' | 'sponsor'>('user');
   const [authorization, setAuthorization] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [txHash, setTxHash] = useState<string>('');
+  const [sponsorInfo, setSponsorInfo] = useState<any>(null);
 
   const handleConnect = (connector: any) => {
     connect({ connector });
@@ -36,11 +44,12 @@ function App() {
     setIsLoading(true);
     try {
       const auth = {
+        address: address,
         chainId: 11155111,
-        address: gasDaddyContractAddress,
         nonce: Date.now(),
       };
       setAuthorization(auth);
+      console.log('Authorization created:', auth);
     } catch (error) {
       console.error('Failed to create authorization:', error);
     } finally {
@@ -48,26 +57,54 @@ function App() {
     }
   };
 
-  const handleMintSBT = async () => {
+  const handleJoinGasDaddy = async () => {
     if (!authorization) return;
 
     setIsLoading(true);
     try {
-      const sbtMintData = encodeFunctionData({
-        abi: sbtAbi,
-        functionName: 'mint',
-        args: [],
+      const response = await fetch(`${API_BASE}/api/join-gasdaddy`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          authorization,
+        }),
       });
 
-      console.log('SBT Mint Data:', sbtMintData);
-      console.log('Target Contract:', sbtContractAddress);
-      console.log('Authorization:', authorization);
+      const result = await response.json();
 
-      setTxHash('0x...' + Math.random().toString(36).substr(2, 9));
+      if (result.success) {
+        setTxHash(result.data.transactionHash);
+        console.log('Successfully joined GasDaddy plan:', result.data);
+      } else {
+        throw new Error(result.error);
+      }
     } catch (error) {
-      console.error('Failed to mint SBT:', error);
+      console.error('Failed to join GasDaddy plan:', error);
+      alert(`Error: ${(error as Error).message}`);
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const fetchSponsorInfo = async () => {
+    try {
+      const response = await fetch(`${API_BASE}/api/sponsor-info`);
+      const result = await response.json();
+      if (result.success) {
+        setSponsorInfo(result.data);
+      }
+    } catch (error) {
+      console.error('Failed to fetch sponsor info:', error);
+    }
+  };
+
+  const handleModeChange = () => {
+    const newMode = mode === 'user' ? 'sponsor' : 'user';
+    setMode(newMode);
+    if (newMode === 'sponsor') {
+      fetchSponsorInfo();
     }
   };
 
@@ -79,6 +116,37 @@ function App() {
             GasDaddy
           </h1>
           <p className="text-gray-600 mt-2">EIP-7702 Gas Sponsorship</p>
+
+          <div className="flex items-center justify-center mt-4 p-2 bg-gray-100 rounded-lg">
+            <Users className="h-4 w-4 mr-2" />
+            <span
+              className={`text-sm font-medium ${
+                mode === 'user' ? 'text-blue-600' : 'text-gray-500'
+              }`}
+            >
+              User
+            </span>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={handleModeChange}
+              className="mx-2 p-1"
+            >
+              {mode === 'user' ? (
+                <ToggleLeft className="h-6 w-6" />
+              ) : (
+                <ToggleRight className="h-6 w-6" />
+              )}
+            </Button>
+            <span
+              className={`text-sm font-medium ${
+                mode === 'sponsor' ? 'text-green-600' : 'text-gray-500'
+              }`}
+            >
+              Sponsor
+            </span>
+            <HandHeart className="h-4 w-4 ml-2" />
+          </div>
         </div>
 
         {!isConnected ? (
@@ -89,7 +157,7 @@ function App() {
                 Connect Wallet
               </CardTitle>
               <CardDescription>
-                Connect your wallet to get started with gas-free transactions
+                Connect your wallet to get started as a {mode}
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-3">
@@ -110,7 +178,7 @@ function App() {
             <Card>
               <CardHeader>
                 <CardTitle className="text-sm font-medium text-gray-600">
-                  Connected Account
+                  Connected as {mode.charAt(0).toUpperCase() + mode.slice(1)}
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
@@ -128,75 +196,125 @@ function App() {
               </CardContent>
             </Card>
 
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-100 text-blue-600 text-xs font-bold">
-                    1
-                  </div>
-                  Create Authorization
-                </CardTitle>
-                <CardDescription>
-                  Sign EIP-7702 authorization to enable gas sponsorship
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Button
-                  onClick={handleCreateAuthorization}
-                  disabled={isLoading || !!authorization}
-                  className="w-full"
-                >
-                  {isLoading ? (
-                    'Creating...'
-                  ) : authorization ? (
-                    <>
-                      <CheckCircle className="h-4 w-4 mr-2" />
-                      Authorization Created
-                    </>
-                  ) : (
-                    'Create Authorization'
-                  )}
-                </Button>
-              </CardContent>
-            </Card>
+            {mode === 'user' ? (
+              <>
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <div className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-100 text-blue-600 text-xs font-bold">
+                        1
+                      </div>
+                      Create Authorization
+                    </CardTitle>
+                    <CardDescription>
+                      Create EIP-7702 authorization for gas sponsorship
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <Button
+                      onClick={handleCreateAuthorization}
+                      disabled={isLoading || !!authorization}
+                      className="w-full"
+                    >
+                      {isLoading ? (
+                        'Creating...'
+                      ) : authorization ? (
+                        <>
+                          <CheckCircle className="h-4 w-4 mr-2" />
+                          Authorization Created
+                        </>
+                      ) : (
+                        'Create Authorization'
+                      )}
+                    </Button>
+                  </CardContent>
+                </Card>
 
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-green-100 text-green-600 text-xs font-bold">
-                    2
-                  </div>
-                  Mint SBT
-                </CardTitle>
-                <CardDescription>
-                  Mint your SBT token without paying gas fees
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Button
-                  onClick={handleMintSBT}
-                  disabled={isLoading || !authorization}
-                  className="w-full"
-                >
-                  {isLoading ? (
-                    'Processing...'
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <div className="flex h-6 w-6 items-center justify-center rounded-full bg-green-100 text-green-600 text-xs font-bold">
+                        2
+                      </div>
+                      Join GasDaddy Plan
+                    </CardTitle>
+                    <CardDescription>
+                      Mint your SBT token without paying gas fees
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <Button
+                      onClick={handleJoinGasDaddy}
+                      disabled={isLoading || !authorization}
+                      className="w-full"
+                    >
+                      {isLoading ? (
+                        'Processing...'
+                      ) : (
+                        <>
+                          <Zap className="h-4 w-4 mr-2" />
+                          Join Plan (Free!)
+                        </>
+                      )}
+                    </Button>
+                    {txHash && (
+                      <div className="mt-3 p-3 bg-green-50 border border-green-200 rounded text-sm">
+                        <p className="text-green-800 font-medium">
+                          ✅ Success!
+                        </p>
+                        <p className="text-green-600 text-xs font-mono mt-1 truncate">
+                          {txHash}
+                        </p>
+                      </div>
+                    )}
+                  </CardContent>
+                </Card>
+              </>
+            ) : (
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <HandHeart className="h-5 w-5" />
+                    Sponsor Dashboard
+                  </CardTitle>
+                  <CardDescription>
+                    Monitor your gas sponsorship activity
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  {sponsorInfo ? (
+                    <div className="space-y-2 text-sm">
+                      <p>
+                        <strong>Sponsor Address:</strong>
+                      </p>
+                      <p className="font-mono text-xs bg-gray-50 p-2 rounded break-all">
+                        {sponsorInfo.sponsorAddress}
+                      </p>
+                      <p>
+                        <strong>GasDaddy Contract:</strong>
+                      </p>
+                      <p className="font-mono text-xs bg-gray-50 p-2 rounded break-all">
+                        {sponsorInfo.gasDaddyContract}
+                      </p>
+                      <p>
+                        <strong>Supported Chains:</strong>
+                      </p>
+                      <p className="text-xs">
+                        {sponsorInfo.supportedChains.join(', ')}
+                      </p>
+                      <p>
+                        <strong>Description:</strong>
+                      </p>
+                      <p className="text-xs">{sponsorInfo.description}</p>
+                    </div>
                   ) : (
-                    <>
-                      <Zap className="h-4 w-4 mr-2" />
-                      Mint SBT (Free!)
-                    </>
-                  )}
-                </Button>
-                {txHash && (
-                  <div className="mt-3 p-3 bg-green-50 border border-green-200 rounded text-sm">
-                    <p className="text-green-800 font-medium">✅ Success!</p>
-                    <p className="text-green-600 text-xs font-mono mt-1 truncate">
-                      {txHash}
+                    <p className="text-gray-500">
+                      Loading sponsor information...
                     </p>
-                  </div>
-                )}
-              </CardContent>
-            </Card>
+                  )}
+                </CardContent>
+              </Card>
+            )}
           </div>
         )}
       </div>

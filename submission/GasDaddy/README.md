@@ -82,18 +82,145 @@ cd your-repo
 npm install  # or yarn install, pnpm install, etc.
 ```
 
-## 🏃‍♂️ Running the Project
+## 🚀 Quick Start
+
+### Method 1: One-click Start (Recommended)
 
 ```bash
-# Start the development server
-npm run dev  # or yarn dev, etc.
+# macOS/Linux
+./start.sh
 
-# Build for production
-npm run build
+# Windows
+start.bat
 
-# Start the production server
-npm start
+# Or use npm
+npm run dev
 ```
+
+### Method 2: Start Separately
+
+```bash
+# 1. Install all dependencies
+npm run install:all
+
+# 2. Start backend (http://localhost:3001)
+npm run backend:dev
+
+# 3. Start frontend (http://localhost:5173)
+npm run frontend:dev
+```
+
+## 📋 Environment Configuration
+
+Configure in `backend/.env` file:
+
+```env
+SPONSOR_PRIVATE_KEY=0x... # Sponsor's private key
+PORT=3001                 # Backend port (optional)
+```
+
+## 🏗️ Project Structure
+
+```
+GasDaddy/
+├── frontend/          # React + shadcn/ui frontend
+├── backend/          # Node.js + Express backend
+├── contracts/        # Solidity smart contracts
+├── src/             # Original example code
+├── start.sh         # Linux/macOS startup script
+├── start.bat        # Windows startup script
+└── package.json     # Root project configuration
+```
+
+## 🎯 Features
+
+### User Mode
+
+- 🔐 Create EIP-7702 authorization (free)
+- 🎁 Join GasDaddy plan, get free tokens
+- 💸 Zero gas fee blockchain interactions
+
+### Sponsor Mode
+
+- 📊 View sponsorship activity dashboard
+- 💰 Pay users' gas fees
+- 🤝 Support multiple contracts and functions
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+- ⚛️ React 19 + TypeScript
+- 🎨 shadcn/ui + Tailwind CSS
+- 🔗 wagmi + viem (Ethereum interaction)
+- ⚡ Vite (build tool)
+
+### Backend
+
+- 🟢 Node.js + Express
+- 📡 viem (Ethereum client)
+- 🔧 EIP-7702 Authorization handling
+
+### Smart Contracts
+
+- 🔗 Solidity + Foundry
+- 🌐 General forwarding contract (GasDaddy)
+- 🏆 Example SBT contract
+
+## 📚 How It Works
+
+1. **User creates authorization**: Frontend generates EIP-7702 authorization
+2. **Send to backend**: Authorization info sent to `/api/join-gasdaddy`
+3. **Sponsor executes**: Backend uses sponsor private key to execute transaction
+4. **Contract delegation**: User EOA temporarily uses GasDaddy contract code
+5. **Call forwarding**: Execute target contract's specified function
+6. **Return result**: User gets tokens, sponsor pays gas
+
+## 🔧 Available Scripts
+
+```bash
+# Development mode (start both frontend and backend)
+npm run dev
+
+# Production mode
+npm run start
+
+# Install all dependencies
+npm run install:all
+
+# Backend related
+npm run backend:dev      # Development mode
+npm run backend:start    # Production mode
+npm run backend:install  # Install backend dependencies
+
+# Frontend related
+npm run frontend:dev      # Development mode
+npm run frontend:build    # Build production version
+npm run frontend:preview  # Preview build result
+npm run frontend:install  # Install frontend dependencies
+```
+
+## 🌐 Access URLs
+
+- 🎨 **Frontend Interface**: http://localhost:5173
+- 📡 **Backend API**: http://localhost:3001
+- 🔍 **Health Check**: http://localhost:3001/health
+- 📊 **Sponsor Info**: http://localhost:3001/api/sponsor-info
+
+## ⚠️ Notes
+
+- Ensure correct Sponsor private key is configured
+- Frontend and backend need to run on different ports
+- Recommend testing on Sepolia testnet
+- Do not use test private keys in production environment
+
+## 🤝 Contributing
+
+Welcome to submit Issues and Pull Requests!
+
+## 📄 License
+
+ISC License
 
 ## 📷 Screenshots
 
