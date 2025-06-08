@@ -158,6 +158,13 @@ export const gasDaddyAbi = [
   },
   {
     type: 'function',
+    name: 'initialize',
+    inputs: [],
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
     name: 'executeMultiCall',
     inputs: [
       { name: 'targets', type: 'address[]' },
@@ -192,7 +199,7 @@ export const gasDaddyAbi = [
 
 // Deploy new contract and update this address after deployment
 export const gasDaddyContractAddress =
-  '0x2666c4F3B213957d529A1628316Ac9926Da4875C';
+  '0x7f89c8b3F4D3A6b6d09172811747144d070410B7';
 
 // Deploy new contract and update this address after deployment
 export const sbtContractAddress = '0x639C5620dB9ec2928f426AA8f59fF50eeF67E378';

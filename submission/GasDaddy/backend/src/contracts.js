@@ -1,6 +1,20 @@
 export const gasDaddyAbi = [
   {
     type: 'function',
+    name: 'initialize',
+    inputs: [],
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    name: 'isInitialized',
+    inputs: [],
+    outputs: [{ name: '', type: 'bool' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
     name: 'executeCall',
     inputs: [
       { name: 'target', type: 'address' },
@@ -27,8 +41,14 @@ export const gasDaddyAbi = [
       { name: 'msgSender', type: 'address' },
       { name: 'contractThis', type: 'address' },
       { name: 'txOrigin', type: 'address' },
+      { name: 'isInit', type: 'bool' },
     ],
     stateMutability: 'view',
+  },
+  {
+    type: 'event',
+    name: 'Initialized',
+    inputs: [{ name: 'user', type: 'address', indexed: true }],
   },
   {
     type: 'event',

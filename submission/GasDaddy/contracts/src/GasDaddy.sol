@@ -7,6 +7,8 @@ pragma solidity ^0.8.19;
  * @notice This contract will be used as code for user EOAs via EIP-7702
  */
 contract GasDaddy {
+    bool private initialized;
+
     event CallSponsored(
         address indexed user,
         address indexed target,
@@ -14,6 +16,26 @@ contract GasDaddy {
         bytes4 selector,
         bool success
     );
+
+   event Initialized(address indexed user);
+
+    /**
+     * @dev Initialize the contract for the user
+     * @notice This function can only be called once per user when the contract is delegated via EIP-7702
+     */
+    function initialize() external {
+        require(!initialized, "GasDaddy: already initialized");
+        initialized = true;
+        emit Initialized(msg.sender);
+    }
+
+    /**
+     * @dev Check if the contract has been initialized
+     * @return Whether the contract has been initialized
+     */
+    function isInitialized() external view returns (bool) {
+        return initialized;
+    }
 
     /**
      * @dev Execute any function call on behalf of the user
@@ -72,8 +94,9 @@ contract GasDaddy {
     function getContext() external view returns (
         address msgSender,
         address contractThis,
-        address txOrigin
+        address txOrigin,
+        bool isInit
     ) {
-        return (msg.sender, address(this), tx.origin);
+        return (msg.sender, address(this), tx.origin, initialized);
     }
 }
