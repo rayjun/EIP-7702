@@ -47,6 +47,12 @@ function App() {
   );
   const [selectedMethod, setSelectedMethod] = useState<string>('mint');
   const [shareUrl, setShareUrl] = useState<string>('');
+  const [urlParams, setUrlParams] = useState<{
+    payforme?: string;
+    targetcontract?: string;
+    method?: string;
+    data?: string;
+  }>({});
 
   const handleConnect = (connector: any) => {
     connect({ connector });
@@ -176,6 +182,52 @@ function App() {
     }
   };
 
+  const handleSponsorGas = async () => {
+    if (!urlParams.payforme || !urlParams.targetcontract || !urlParams.method) {
+      alert('Missing required parameters');
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      // Here you would implement the actual gas sponsorship logic
+      // For now, just simulate the process
+      console.log('Sponsoring gas for:', {
+        user: urlParams.payforme,
+        contract: urlParams.targetcontract,
+        method: urlParams.method,
+        data: urlParams.data,
+      });
+
+      // Simulate API call delay
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+
+      alert('Successfully sponsored gas! You are now their Gas Daddy! 🎉');
+    } catch (error) {
+      console.error('Failed to sponsor gas:', error);
+      alert('Failed to sponsor gas. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Parse URL parameters on component mount
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const urlParamsObj = {
+      payforme: params.get('payforme') || undefined,
+      targetcontract: params.get('targetcontract') || undefined,
+      method: params.get('method') || undefined,
+      data: params.get('data') || undefined,
+    };
+    setUrlParams(urlParamsObj);
+
+    // If payforme parameter exists, switch to sponsor mode
+    if (urlParamsObj.payforme) {
+      setMode('sponsor');
+    }
+  }, []);
+
   // Generate URL when address or selections change
   useEffect(() => {
     if (address && selectedContract && selectedMethod) {
@@ -213,6 +265,7 @@ function App() {
               variant="ghost"
               size="sm"
               onClick={handleModeChange}
+              disabled={!!urlParams.payforme}
               className="mx-2 p-1"
             >
               {mode === 'user' ? (
@@ -434,42 +487,104 @@ function App() {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <HandHeart className="h-5 w-5" />
-                    Sponsor Dashboard
+                    {urlParams.payforme
+                      ? 'Gas Sponsor Request'
+                      : 'Sponsor Dashboard'}
                   </CardTitle>
                   <CardDescription>
-                    Monitor your gas sponsorship activity
+                    {urlParams.payforme
+                      ? 'Someone is requesting your help to pay for gas'
+                      : 'Monitor your gas sponsorship activity'}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  {sponsorInfo ? (
-                    <div className="space-y-2 text-sm">
-                      <p>
-                        <strong>Sponsor Address:</strong>
-                      </p>
-                      <p className="font-mono text-xs bg-gray-50 p-2 rounded break-all">
-                        {sponsorInfo.sponsorAddress}
-                      </p>
-                      <p>
-                        <strong>GasDaddy Contract:</strong>
-                      </p>
-                      <p className="font-mono text-xs bg-gray-50 p-2 rounded break-all">
-                        {sponsorInfo.gasDaddyContract}
-                      </p>
-                      <p>
-                        <strong>Supported Chains:</strong>
-                      </p>
-                      <p className="text-xs">
-                        {sponsorInfo.supportedChains.join(', ')}
-                      </p>
-                      <p>
-                        <strong>Description:</strong>
-                      </p>
-                      <p className="text-xs">{sponsorInfo.description}</p>
+                  {urlParams.payforme ? (
+                    <div className="space-y-4">
+                      <div className="p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+                        <p className="text-sm text-yellow-800 mb-4">
+                          Are you willing to sponsor gas for{' '}
+                          <span className="font-mono font-semibold text-yellow-900">
+                            {urlParams.payforme}
+                          </span>{' '}
+                          calling{' '}
+                          <span className="font-mono font-semibold text-yellow-900">
+                            {urlParams.targetcontract}
+                          </span>{' '}
+                          method{' '}
+                          <span className="font-mono font-semibold text-yellow-900">
+                            {urlParams.method}
+                          </span>{' '}
+                          and become their Gas Daddy?
+                        </p>
+
+                        <div className="space-y-2 text-xs text-yellow-700">
+                          <p>
+                            <strong>User:</strong> {urlParams.payforme}
+                          </p>
+                          <p>
+                            <strong>Contract:</strong>{' '}
+                            {urlParams.targetcontract}
+                          </p>
+                          <p>
+                            <strong>Method:</strong> {urlParams.method}
+                          </p>
+                          {urlParams.data && (
+                            <p>
+                              <strong>Call Data:</strong>{' '}
+                              {urlParams.data.slice(0, 20)}...
+                            </p>
+                          )}
+                        </div>
+                      </div>
+
+                      <Button
+                        onClick={handleSponsorGas}
+                        disabled={isLoading}
+                        className="w-full bg-green-600 hover:bg-green-700"
+                      >
+                        {isLoading ? (
+                          'Sponsoring Gas...'
+                        ) : (
+                          <>
+                            <HandHeart className="h-4 w-4 mr-2" />
+                            Yes, I'll be their Gas Daddy! 💪
+                          </>
+                        )}
+                      </Button>
                     </div>
                   ) : (
-                    <p className="text-gray-500">
-                      Loading sponsor information...
-                    </p>
+                    <>
+                      {sponsorInfo ? (
+                        <div className="space-y-2 text-sm">
+                          <p>
+                            <strong>Sponsor Address:</strong>
+                          </p>
+                          <p className="font-mono text-xs bg-gray-50 p-2 rounded break-all">
+                            {sponsorInfo.sponsorAddress}
+                          </p>
+                          <p>
+                            <strong>GasDaddy Contract:</strong>
+                          </p>
+                          <p className="font-mono text-xs bg-gray-50 p-2 rounded break-all">
+                            {sponsorInfo.gasDaddyContract}
+                          </p>
+                          <p>
+                            <strong>Supported Chains:</strong>
+                          </p>
+                          <p className="text-xs">
+                            {sponsorInfo.supportedChains.join(', ')}
+                          </p>
+                          <p>
+                            <strong>Description:</strong>
+                          </p>
+                          <p className="text-xs">{sponsorInfo.description}</p>
+                        </div>
+                      ) : (
+                        <p className="text-gray-500">
+                          Loading sponsor information...
+                        </p>
+                      )}
+                    </>
                   )}
                 </CardContent>
               </Card>
