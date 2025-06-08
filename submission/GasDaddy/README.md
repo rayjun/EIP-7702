@@ -55,36 +55,19 @@ This solution makes it easier for users to get started on new chains and encoura
 - Secure transaction authorization mechanism
 - Easy-to-use interface for both requesters and sponsors
 
-## TODO
-
-- [ ] Implementation design
-- [ ] Init code with proper tech stacks
-- [ ] Finish generating authorization logic
-- [ ] Finish sponsorship logic
-- [ ] Polish FrontEnd UI
-
-## 🛠️ Technologies Used
-
-- Technology 1
-- Technology 2
-- Technology 3
+Note: The frontend and backend not working, and just for demo. Because viem doesn't support sign Authorization through JSON-RPC account yet.
 
 ## 🚀 Installation
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/your-repo.git
-
-# Navigate to the project directory
-cd your-repo
+git clone
 
 # Install dependencies
-npm install  # or yarn install, pnpm install, etc.
+npm install  # for frontend, backend as well
 ```
 
-## 🚀 Quick Start
-
-### Method 1: One-click Start (Recommended)
+## 🚀 Quick Start App
 
 ```bash
 # macOS/Linux
@@ -142,7 +125,6 @@ GasDaddy/
 
 ### Sponsor Mode
 
-- 📊 View sponsorship activity dashboard
 - 💰 Pay users' gas fees
 - 🤝 Support multiple contracts and functions
 
@@ -169,38 +151,29 @@ GasDaddy/
 
 ## 📚 How It Works
 
+### Setup delegate contract
+
 1. **User creates authorization**: Frontend generates EIP-7702 authorization with the correct EOA nonce (not a random number)
-2. **Send to backend**: Authorization info sent to `/api/join-gasdaddy`
-3. **Sponsor executes**: Backend uses sponsor private key to execute transaction
-4. **Contract delegation**: User EOA temporarily uses GasDaddy contract code
-5. **Call forwarding**: Execute target contract's specified function
-6. **Return result**: User gets tokens, sponsor pays gas
+2. **Send to relayer to setup delegate contract**: Authorization info sent to `/api/join-gasdaddy`
+3. **Relayer executes**: Service provider private key to execute transaction to help user setup delegate contract
+
+- User: https://sepolia.etherscan.io/address/0x6c28fcee0a248ed3e4c3b54ad47554f702b7df22
+- Setup delegate contract tx: https://sepolia.etherscan.io/tx/0x469a4fdd9af00d7c3c1327b787fd7399846c98422735e90de3566ba607d5e735
+
+### Build params and find Gas Daddy
+
+1. **User selects contract to interact**: User creates params for calling contracts
+2. **Looking for Gas Daddy**: Send it to friends or group
+
+- Url example: https://gasdaddy.com/?payforme=0x6C28fCEe0a248Ed3E4C3B54AD47554f702B7DF22&targetcontract=0x639C5620dB9ec2928f426AA8f59fF50eeF67E378&method=mint&data=0x1249c58b
+
+### Gas Daddy shows up and pay for the gas
+
+1. **Gas Daddy pay for the gas**: User gets tokens, sponsor pays gas
+
+- Pay for gas tx: https://sepolia.etherscan.io/tx/0x22398f9d96e943d2b984917838a30624a854e0f98b0f3689d655523c26ffac7e
 
 **Important**: The authorization nonce must be the actual transaction count from the user's EOA, obtained via `getTransactionCount()`. Using random numbers or timestamps will cause the EIP-7702 transaction to fail.
-
-## 🔧 Available Scripts
-
-```bash
-# Development mode (start both frontend and backend)
-npm run dev
-
-# Production mode
-npm run start
-
-# Install all dependencies
-npm run install:all
-
-# Backend related
-npm run backend:dev      # Development mode
-npm run backend:start    # Production mode
-npm run backend:install  # Install backend dependencies
-
-# Frontend related
-npm run frontend:dev      # Development mode
-npm run frontend:build    # Build production version
-npm run frontend:preview  # Preview build result
-npm run frontend:install  # Install frontend dependencies
-```
 
 ## 🌐 Access URLs
 
@@ -209,31 +182,13 @@ npm run frontend:install  # Install frontend dependencies
 - 🔍 **Health Check**: http://localhost:3001/health
 - 📊 **Sponsor Info**: http://localhost:3001/api/sponsor-info
 
-## ⚠️ Notes
-
-- Ensure correct Sponsor private key is configured
-- Frontend and backend need to run on different ports
-- Recommend testing on Sepolia testnet
-- Do not use test private keys in production environment
-
-## 🤝 Contributing
-
-Welcome to submit Issues and Pull Requests!
-
-## 📄 License
-
-ISC License
-
-## 📷 Screenshots
-
 <!-- Add screenshots of your project here -->
 
 ![Screenshot 1](path/to/screenshot1.png)
 
 ## 🔮 Future Plans
 
-- Future feature 1
-- Future feature 2
+- Try to make it work on frontend
 
 ## Notes
 
