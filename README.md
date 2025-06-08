@@ -252,6 +252,7 @@ This isn't just a fix — it's a new design space for wallets, dApps, security, 
 | [Bo](./registration/Bo.md) | Full-stack Developer | Looking for teammates | Asset Guardian 7702 | Utilizing EIP-7702 technology to rescue assets from compromised private key accounts and provide sec... | Bo-00 (GitHub) |
 | [Coooder](./registration/Coooder.md) | Frontend Developer | Looking for teammates | 7702-Defender | 7702-Defender is a dApp that defends against attacks on EIP-7702 accounts. | @Coooder_Crypto (Telegram) |
 | [xfajarr](./registration/xfajarr.md) | backend Developer & Solidity Developer | Solo participation |  |  | @xfajarrr (Telegram) |
+| [Kevin](./registration/kevinsslin.md) | Solidity Developer |  |  |  | @kevinsslin (Telegram) |
 
 ## 📚 Resources
 
