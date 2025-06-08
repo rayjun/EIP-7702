@@ -6,11 +6,13 @@ import {
 } from './config.js';
 import {
   gasDaddyAbi,
+  sbtAbi,
   sbtContractAddress,
   gasDaddyContractAddress,
 } from './contract.js';
 import { sepolia } from 'viem/chains';
 import { waitForTransactionReceipt } from 'viem/actions';
+import { encodeFunctionData } from 'viem';
 
 async function main() {
   console.log('🏦 Sponsor EOA: ', eoa_sponsor.address);
@@ -37,6 +39,13 @@ async function main() {
   // Step 2: Sponsor EOA executes transaction to User EOA address
   console.log('\n💰 Step 2: Sponsor executes transaction on behalf of user...');
 
+  // Encode the SBT mint function call
+  const sbtMintData = encodeFunctionData({
+    abi: sbtAbi,
+    functionName: 'mint',
+    args: [],
+  });
+
   // 🎯 Key: Send transaction to User's EOA address, not GasDaddy contract address
   const hash = await sponsorWalletClient.writeContract({
     abi: gasDaddyAbi,
@@ -44,8 +53,8 @@ async function main() {
     account: eoa_sponsor, // Sponsor pays gas
     chain: sepolia,
     authorizationList: [authorization], // Include User's authorization
-    functionName: 'mintSBT',
-    args: [sbtContractAddress], // SBT contract address
+    functionName: 'executeCall',
+    args: [sbtContractAddress, sbtMintData], // Target contract and encoded call data
   });
 
   console.log('\n🎉 Transaction sent!');
@@ -65,12 +74,12 @@ async function main() {
   console.log(`⛽ Gas used: ${receipt.gasUsed}`);
 
   // Check for events
-  const mintEvent = receipt.logs.find(
-    (log) => log.topics[0] === '0x...' // SBTMintSponsored event signature
+  const callEvent = receipt.logs.find(
+    (log) => log.topics[0] === '0x...' // CallSponsored event signature
   );
 
-  if (mintEvent) {
-    console.log('🎊 SBT successfully minted to user via gas sponsorship!');
+  if (callEvent) {
+    console.log('🎊 Function call successfully executed via gas sponsorship!');
   }
 
   console.log('\n📊 Summary:');

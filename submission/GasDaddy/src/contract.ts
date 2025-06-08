@@ -148,8 +148,21 @@ export const sbtAbi = [
 export const gasDaddyAbi = [
   {
     type: 'function',
-    name: 'mintSBT',
-    inputs: [{ name: 'sbtContract', type: 'address' }],
+    name: 'executeCall',
+    inputs: [
+      { name: 'target', type: 'address' },
+      { name: 'data', type: 'bytes' },
+    ],
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    name: 'executeMultiCall',
+    inputs: [
+      { name: 'targets', type: 'address[]' },
+      { name: 'data', type: 'bytes[]' },
+    ],
     outputs: [],
     stateMutability: 'nonpayable',
   },
@@ -166,18 +179,20 @@ export const gasDaddyAbi = [
   },
   {
     type: 'event',
-    name: 'SBTMintSponsored',
+    name: 'CallSponsored',
     inputs: [
       { name: 'user', type: 'address', indexed: true },
-      { name: 'sbtContract', type: 'address', indexed: true },
+      { name: 'target', type: 'address', indexed: true },
       { name: 'sponsor', type: 'address', indexed: true },
+      { name: 'selector', type: 'bytes4', indexed: false },
+      { name: 'success', type: 'bool', indexed: false },
     ],
   },
 ] as const;
 
 // Deploy new contract and update this address after deployment
 export const gasDaddyContractAddress =
-  '0xf8D3C1911d8b65FE4DE0604Bed26C63CABd08779';
+  '0x2666c4F3B213957d529A1628316Ac9926Da4875C';
 
 // Deploy new contract and update this address after deployment
 export const sbtContractAddress = '0x639C5620dB9ec2928f426AA8f59fF50eeF67E378';
