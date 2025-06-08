@@ -24,7 +24,6 @@ contract GasDaddy {
      * @notice This function can only be called once per user when the contract is delegated via EIP-7702
      */
     function initialize() external {
-        require(!initialized, "GasDaddy: already initialized");
         initialized = true;
         emit Initialized(msg.sender);
     }
