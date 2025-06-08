@@ -44,7 +44,7 @@ app.get('/api/sponsor-info', (req, res) => {
 // User joins GasDaddy plan
 app.post('/api/join-gasdaddy', async (req, res) => {
   try {
-    const { authorization } = req.body;
+    const { authorization, address } = req.body;
 
     // Validate required parameters
     if (!authorization) {
@@ -54,27 +54,31 @@ app.post('/api/join-gasdaddy', async (req, res) => {
       });
     }
 
+    if (!address) {
+      return res.status(400).json({
+        success: false,
+        error: 'Missing address parameter',
+      });
+    }
+
     if (
-      !authorization.address ||
+      !authorization.contractAddress ||
       !authorization.chainId ||
       authorization.nonce === undefined
     ) {
       return res.status(400).json({
         success: false,
         error:
-          'Invalid authorization format. Required: address, chainId, nonce',
+          'Invalid authorization format. Required: contractAddress, chainId, nonce',
       });
     }
 
-    console.log(
-      '📝 Received EIP-7702 setup request from:',
-      authorization.address
-    );
+    console.log('📝 Received EIP-7702 setup request from:', address);
     console.log('🔗 Chain ID:', authorization.chainId);
     console.log('🔢 Nonce:', authorization.nonce);
 
     // Execute EIP-7702 setup transaction
-    const result = await joinGasDaddyPlan(authorization);
+    const result = await joinGasDaddyPlan(authorization, address);
 
     res.json({
       success: true,

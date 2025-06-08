@@ -1,6 +1,15 @@
 import { useState } from 'react';
 import { useAccount, useConnect, useDisconnect, useSignMessage } from 'wagmi';
-import { encodeFunctionData } from 'viem';
+import {
+  encodeFunctionData,
+  createPublicClient,
+  http,
+  keccak256,
+  encodeAbiParameters,
+  parseAbiParameters,
+} from 'viem';
+import { useWalletClient } from 'wagmi';
+import { sepolia } from 'viem/chains';
 import {
   Wallet,
   Zap,
@@ -22,11 +31,17 @@ import { gasDaddyAbi, gasDaddyContractAddress } from './contracts';
 
 const API_BASE = 'http://localhost:3001';
 
+// Create public client for reading blockchain data
+const publicClient = createPublicClient({
+  chain: sepolia,
+  transport: http(),
+});
+
 function App() {
   const { address, isConnected } = useAccount();
   const { connect, connectors } = useConnect();
   const { disconnect } = useDisconnect();
-  const { signMessageAsync } = useSignMessage();
+  const { data: walletClient } = useWalletClient();
 
   const [mode, setMode] = useState<'user' | 'sponsor'>('user');
   const [authorization, setAuthorization] = useState<any>(null);
@@ -43,15 +58,54 @@ function App() {
 
     setIsLoading(true);
     try {
-      const auth = {
+      // Get the current nonce for the user's EOA
+      // This is critical for EIP-7702: nonce must be the actual transaction count
+      // from the user's account, not a random number or timestamp
+      const nonce = await publicClient.getTransactionCount({
         address: address,
-        chainId: 11155111,
-        nonce: Date.now(),
+      });
+
+      // Since wagmi walletClient uses JSON-RPC account which doesn't support signAuthorization,
+      // we need to manually construct the EIP-7702 authorization using signMessage
+      if (!walletClient) {
+        throw new Error('Wallet client is not available');
+      }
+
+      // Construct EIP-7702 authorization message according to the standard
+      // The message format is: keccak256(abi.encodePacked(chainId, contractAddress, nonce))
+      const chainId = 11155111;
+      const encodedAuth = encodeAbiParameters(
+        parseAbiParameters('uint256, address, uint256'),
+        [BigInt(chainId), gasDaddyContractAddress, BigInt(nonce)]
+      );
+
+      const authHash = keccak256(encodedAuth);
+
+      // Sign the authorization hash
+      const signature = await walletClient.signMessage({
+        message: { raw: authHash },
+      });
+
+      // Parse signature components (r, s, v)
+      const r = signature.slice(0, 66) as `0x${string}`;
+      const s = ('0x' + signature.slice(66, 130)) as `0x${string}`;
+      const v = parseInt(signature.slice(130, 132), 16);
+      const yParity = v === 27 ? 0 : 1;
+
+      const authorization = {
+        chainId: chainId,
+        contractAddress: gasDaddyContractAddress,
+        nonce: nonce,
+        r: r,
+        s: s,
+        yParity: yParity,
       };
-      setAuthorization(auth);
-      console.log('Authorization created:', auth);
+
+      setAuthorization(authorization);
+      console.log('Authorization created and signed:', authorization);
     } catch (error) {
       console.error('Failed to create authorization:', error);
+      alert('Failed to sign authorization. Please try again.');
     } finally {
       setIsLoading(false);
     }
@@ -69,6 +123,7 @@ function App() {
         },
         body: JSON.stringify({
           authorization,
+          address: address,
         }),
       });
 

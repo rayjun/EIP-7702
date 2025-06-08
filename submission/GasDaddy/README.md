@@ -169,12 +169,14 @@ GasDaddy/
 
 ## 📚 How It Works
 
-1. **User creates authorization**: Frontend generates EIP-7702 authorization
+1. **User creates authorization**: Frontend generates EIP-7702 authorization with the correct EOA nonce (not a random number)
 2. **Send to backend**: Authorization info sent to `/api/join-gasdaddy`
 3. **Sponsor executes**: Backend uses sponsor private key to execute transaction
 4. **Contract delegation**: User EOA temporarily uses GasDaddy contract code
 5. **Call forwarding**: Execute target contract's specified function
 6. **Return result**: User gets tokens, sponsor pays gas
+
+**Important**: The authorization nonce must be the actual transaction count from the user's EOA, obtained via `getTransactionCount()`. Using random numbers or timestamps will cause the EIP-7702 transaction to fail.
 
 ## 🔧 Available Scripts
 

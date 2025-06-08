@@ -109,11 +109,13 @@ Response:
 
 ### EIP-7702 Workflow
 
-1. **User creates authorization**: Frontend generates EIP-7702 authorization object
+1. **User creates authorization**: Frontend generates EIP-7702 authorization object with correct EOA nonce
 2. **Submit to backend**: Send authorization to `/api/join-gasdaddy` endpoint
 3. **Sponsor executes**: Backend uses sponsor account to submit type-4 transaction
 4. **Establish delegation**: User EOA is set to use GasDaddy contract code
 5. **Complete setup**: User EOA can now execute GasDaddy functions
+
+**Critical**: The authorization nonce must be the user's actual transaction count, not a random value. Frontend should use `getTransactionCount()` to obtain the correct nonce.
 
 ### Core Files
 
